@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
-import { Grid3X3 } from "lucide-react";
+import { ArrowUpRight, Grid3X3 } from "lucide-react";
 
 import { getDailyPlayerResults, getGameDates, getPlayers } from "@/lib/data";
 import { formatDateShort, formatPnl } from "@/lib/formatters";
@@ -44,7 +44,7 @@ export function GameDayHeatmap({ records, dateRange }: GameDayHeatmapProps) {
             GAME DAY
           </div>
           <h2>每日戰績</h2>
-          <p>玩家在各遊戲日的累積 P&amp;L</p>
+          <p>玩家在各遊戲日的累積 P&amp;L · 點選玩家查看完整分析</p>
         </div>
       </div>
       <div className="heatmap-scroll">
@@ -63,7 +63,10 @@ export function GameDayHeatmap({ records, dateRange }: GameDayHeatmapProps) {
             {players.map((player) => (
               <tr key={player}>
                 <th scope="row">
-                  <Link href={getPlayerHref(player)}>{player}</Link>
+                  <Link href={getPlayerHref(player)} className="player-link">
+                    {player}
+                    <ArrowUpRight size={13} aria-hidden="true" />
+                  </Link>
                 </th>
                 {dates.map((date) => {
                   const result = resultByKey.get(`${player}::${date}`) as

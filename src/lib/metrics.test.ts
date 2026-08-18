@@ -30,7 +30,7 @@ describe("acceptance dataset", () => {
     expect(sessionResults).toHaveLength(148);
     expect(getSessions(sessionResults)).toHaveLength(25);
     expect(getGameDates(sessionResults)).toHaveLength(3);
-    expect(getPlayers(sessionResults)).toHaveLength(10);
+    expect(getPlayers(sessionResults)).toHaveLength(9);
   });
 
   it.each([
@@ -38,9 +38,8 @@ describe("acceptance dataset", () => {
     ["強的可怕", 25, 512.5, 410, 0.48, 270, -250, 457],
     ["KK之王", 25, 194, 155.2, 0.4, 385, -250, undefined],
     ["河牌幹死你", 11, 177.5, 322.7, 0.545, 447.5, -250, undefined],
-    ["大舅哥", 14, 177.5, 253.6, 0.429, 130, -155, undefined],
+    ["大舅哥", 17, -27.5, -32.4, 0.412, 130, -250, undefined],
     ["淡水金城武", 25, 39.5, 31.6, 0.48, 272.5, -250, undefined],
-    ["Kai", 3, -205, -1366.7, 0.333, 57.5, -250, undefined],
     ["Z隕石毀滅者", 3, -210, -1400, 0.333, 162.5, -215, undefined],
     ["中", 14, -584.5, -835, 0.214, 72.5, -250, undefined],
     ["帥潮", 14, -1007.5, -1439.3, 0.286, 175, -250, undefined],
@@ -64,29 +63,36 @@ describe("acceptance dataset", () => {
       ["我是你爸", 1],
       ["強的可怕", 2],
       ["KK之王", 3],
-      ["大舅哥", 4],
       ["河牌幹死你", 4],
-      ["淡水金城武", 6],
-      ["Kai", 7],
-      ["Z隕石毀滅者", 8],
-      ["中", 9],
-      ["帥潮", 10],
+      ["淡水金城武", 5],
+      ["大舅哥", 6],
+      ["Z隕石毀滅者", 7],
+      ["中", 8],
+      ["帥潮", 9],
     ]);
   });
 
   it("leaves low-sample BB/100 players unranked", () => {
     const leaderboard = getBb100Leaderboard(sessionResults);
     expect(leaderboard.filter((entry) => entry.isQualified).map((entry) => entry.playerName))
-      .toEqual(["我是你爸", "強的可怕", "河牌幹死你", "大舅哥", "KK之王", "淡水金城武", "中", "帥潮"]);
-    expect(leaderboard.find((entry) => entry.playerName === "Kai")).toMatchObject({
-      playedSessions: 3,
-      rank: null,
-      isQualified: false,
+      .toEqual(["我是你爸", "強的可怕", "河牌幹死你", "KK之王", "淡水金城武", "大舅哥", "中", "帥潮"]);
+    expect(leaderboard.find((entry) => entry.playerName === "大舅哥")).toMatchObject({
+      playedSessions: 17,
+      rank: 6,
+      isQualified: true,
     });
     expect(leaderboard.find((entry) => entry.playerName === "Z隕石毀滅者")).toMatchObject({
       playedSessions: 3,
       rank: null,
       isQualified: false,
+    });
+  });
+
+  it("combines Kai records under the canonical 大舅哥 player identity", () => {
+    expect(sessionResults.some((record) => record.player_name === "Kai")).toBe(false);
+    expect(getPlayerStats(sessionResults, "大舅哥")).toMatchObject({
+      playedSessions: 17,
+      totalPnl: -27.5,
     });
   });
 

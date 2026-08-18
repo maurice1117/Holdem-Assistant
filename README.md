@@ -24,6 +24,13 @@
 - 進階統計：高點、目前／最大回撤、標準差、連勝／連敗、爆掉次數。
 - 可篩選、排序的玩家局次紀錄。
 
+### Phase 4：每局紀錄
+
+- `/sessions` 每局紀錄頁，可依遊戲日期與玩家篩選。
+- 每局顯示參與人數、最大贏家與最大輸家，並可展開同桌所有玩家的 P&L。
+- 展開明細中的玩家名稱可直接進入個人分析頁。
+- `Kai` 的歷史紀錄會在 runtime 合併到「大舅哥」，原始 JSON 保持不變。
+
 ## 環境需求
 
 - Node.js 22 以上
@@ -86,3 +93,5 @@ pnpm test:watch
 - `src/app/players/[playerSlug]/page.tsx`：玩家個人頁路由
 - `src/components/players/player-detail.tsx`：玩家個人分析頁
 - `src/components/charts/`：總覽與玩家圖表
+- `src/app/sessions/page.tsx`：每局紀錄路由
+- `src/components/sessions/sessions-page.tsx`：每局紀錄與篩選互動

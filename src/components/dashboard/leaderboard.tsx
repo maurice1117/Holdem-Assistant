@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BadgeCheck } from "lucide-react";
+import { ArrowUpRight, BadgeCheck } from "lucide-react";
 
 import { formatBb100, formatPnl } from "@/lib/formatters";
 import { getPlayerHref } from "@/lib/routes";
@@ -36,7 +36,10 @@ function LeaderboardRows({
         </td>
         <th scope="row">
           <span className="player-cell">
-            <Link href={getPlayerHref(entry.playerName)}>{entry.playerName}</Link>
+            <Link href={getPlayerHref(entry.playerName)} className="player-link">
+              {entry.playerName}
+              <ArrowUpRight size={13} aria-hidden="true" />
+            </Link>
             {!entry.isQualified ? (
               <span className="sample-badge">樣本不足 · {entry.playedSessions}局</span>
             ) : null}
@@ -64,7 +67,7 @@ export function Leaderboard({ title, subtitle, entries, metric }: LeaderboardPro
             RANKING
           </div>
           <h2>{title}</h2>
-          <p>{subtitle}</p>
+          <p>{subtitle} · 點選玩家查看完整分析</p>
         </div>
       </div>
       <div className="table-scroll">
