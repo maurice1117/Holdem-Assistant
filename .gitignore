@@ -216,3 +216,13 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Node / TypeScript
+node_modules/
+.pnpm-store/
+.tmp-spreadsheet/
+coverage/
+
+# The Python template above ignores every directory named lib.
+!src/lib/
+!src/lib/**

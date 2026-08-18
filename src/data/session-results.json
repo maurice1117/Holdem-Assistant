@@ -1,0 +1,1482 @@
+[
+  {
+    "game_date": "2026-07-25",
+    "session_number": 1,
+    "player_name": "強的可怕",
+    "pnl": -45,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 2,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 1,
+    "player_name": "KK之王",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 2,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 1,
+    "player_name": "河牌幹死你",
+    "pnl": 158,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 2,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 1,
+    "player_name": "淡水金城武",
+    "pnl": 137,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 2,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 2,
+    "player_name": "強的可怕",
+    "pnl": -10,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 3,
+    "session_status": "WARNING"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 2,
+    "player_name": "KK之王",
+    "pnl": 200,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 3,
+    "session_status": "WARNING"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 2,
+    "player_name": "河牌幹死你",
+    "pnl": -28,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 3,
+    "session_status": "WARNING"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 2,
+    "player_name": "淡水金城武",
+    "pnl": -145,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 3,
+    "session_status": "WARNING"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 3,
+    "player_name": "強的可怕",
+    "pnl": -35,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 3,
+    "player_name": "KK之王",
+    "pnl": -87.5,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 3,
+    "player_name": "河牌幹死你",
+    "pnl": 67.5,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 3,
+    "player_name": "淡水金城武",
+    "pnl": 142.5,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 3,
+    "player_name": "Kai",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 3,
+    "player_name": "Z隕石毀滅者",
+    "pnl": 162.5,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 4,
+    "player_name": "強的可怕",
+    "pnl": -175,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 4,
+    "player_name": "KK之王",
+    "pnl": 52.5,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 4,
+    "player_name": "河牌幹死你",
+    "pnl": 112.5,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 4,
+    "player_name": "淡水金城武",
+    "pnl": 167.5,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 4,
+    "player_name": "Kai",
+    "pnl": 57.5,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 4,
+    "player_name": "Z隕石毀滅者",
+    "pnl": -215,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 5,
+    "player_name": "強的可怕",
+    "pnl": 110,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 6,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 5,
+    "player_name": "KK之王",
+    "pnl": 227.5,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 6,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 5,
+    "player_name": "河牌幹死你",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 6,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 5,
+    "player_name": "淡水金城武",
+    "pnl": -167.5,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 6,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 5,
+    "player_name": "Kai",
+    "pnl": -12.5,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 6,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-25",
+    "session_number": 5,
+    "player_name": "Z隕石毀滅者",
+    "pnl": -157.5,
+    "participated": true,
+    "source_sheet": "260725",
+    "source_row": 6,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 1,
+    "player_name": "強的可怕",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 2,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 1,
+    "player_name": "KK之王",
+    "pnl": -112.5,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 2,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 1,
+    "player_name": "河牌幹死你",
+    "pnl": 447.5,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 2,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 1,
+    "player_name": "淡水金城武",
+    "pnl": -85,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 2,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 2,
+    "player_name": "強的可怕",
+    "pnl": 200,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 3,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 2,
+    "player_name": "KK之王",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 3,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 2,
+    "player_name": "河牌幹死你",
+    "pnl": -222.5,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 3,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 2,
+    "player_name": "淡水金城武",
+    "pnl": 272.5,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 3,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 3,
+    "player_name": "強的可怕",
+    "pnl": 117.5,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 3,
+    "player_name": "KK之王",
+    "pnl": 112.5,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 3,
+    "player_name": "河牌幹死你",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 3,
+    "player_name": "淡水金城武",
+    "pnl": 20,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 4,
+    "player_name": "強的可怕",
+    "pnl": 242.5,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 4,
+    "player_name": "KK之王",
+    "pnl": -2.5,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 4,
+    "player_name": "河牌幹死你",
+    "pnl": 10,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 4,
+    "player_name": "淡水金城武",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 5,
+    "player_name": "強的可怕",
+    "pnl": 222.5,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 6,
+    "session_status": "WARNING"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 5,
+    "player_name": "KK之王",
+    "pnl": -12.5,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 6,
+    "session_status": "WARNING"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 5,
+    "player_name": "河牌幹死你",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 6,
+    "session_status": "WARNING"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 5,
+    "player_name": "淡水金城武",
+    "pnl": 152.5,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 6,
+    "session_status": "WARNING"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 6,
+    "player_name": "強的可怕",
+    "pnl": 107.5,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 7,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 6,
+    "player_name": "KK之王",
+    "pnl": 10,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 7,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 6,
+    "player_name": "河牌幹死你",
+    "pnl": 132.5,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 7,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-07-31",
+    "session_number": 6,
+    "player_name": "淡水金城武",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260731",
+    "source_row": 7,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 1,
+    "player_name": "強的可怕",
+    "pnl": -100,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 2,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 1,
+    "player_name": "KK之王",
+    "pnl": 102,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 2,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 1,
+    "player_name": "淡水金城武",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 2,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 1,
+    "player_name": "中",
+    "pnl": -2,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 2,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 1,
+    "player_name": "我是你爸",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 2,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 1,
+    "player_name": "大舅哥",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 2,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 1,
+    "player_name": "帥潮",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 2,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 2,
+    "player_name": "強的可怕",
+    "pnl": -12,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 3,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 2,
+    "player_name": "KK之王",
+    "pnl": -38,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 3,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 2,
+    "player_name": "淡水金城武",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 3,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 2,
+    "player_name": "中",
+    "pnl": 50,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 3,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 2,
+    "player_name": "我是你爸",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 3,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 2,
+    "player_name": "大舅哥",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 3,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 2,
+    "player_name": "帥潮",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 3,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 3,
+    "player_name": "強的可怕",
+    "pnl": -42.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 3,
+    "player_name": "KK之王",
+    "pnl": -30,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 3,
+    "player_name": "淡水金城武",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 3,
+    "player_name": "中",
+    "pnl": -155,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 3,
+    "player_name": "我是你爸",
+    "pnl": 452.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 3,
+    "player_name": "大舅哥",
+    "pnl": 25,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 3,
+    "player_name": "帥潮",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 4,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 4,
+    "player_name": "強的可怕",
+    "pnl": 72.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 4,
+    "player_name": "KK之王",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 4,
+    "player_name": "淡水金城武",
+    "pnl": 10,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 4,
+    "player_name": "中",
+    "pnl": -5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 4,
+    "player_name": "我是你爸",
+    "pnl": 180,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 4,
+    "player_name": "大舅哥",
+    "pnl": -7.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 4,
+    "player_name": "帥潮",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 5,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 5,
+    "player_name": "強的可怕",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 6,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 5,
+    "player_name": "KK之王",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 6,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 5,
+    "player_name": "淡水金城武",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 6,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 5,
+    "player_name": "中",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 6,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 5,
+    "player_name": "我是你爸",
+    "pnl": 250,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 6,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 5,
+    "player_name": "大舅哥",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 6,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 5,
+    "player_name": "帥潮",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 6,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 6,
+    "player_name": "強的可怕",
+    "pnl": 62.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 7,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 6,
+    "player_name": "KK之王",
+    "pnl": -77.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 7,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 6,
+    "player_name": "淡水金城武",
+    "pnl": 100,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 7,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 6,
+    "player_name": "中",
+    "pnl": 5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 7,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 6,
+    "player_name": "我是你爸",
+    "pnl": 30,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 7,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 6,
+    "player_name": "大舅哥",
+    "pnl": 130,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 7,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 6,
+    "player_name": "帥潮",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 7,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 7,
+    "player_name": "強的可怕",
+    "pnl": -140,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 8,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 7,
+    "player_name": "KK之王",
+    "pnl": 385,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 8,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 7,
+    "player_name": "淡水金城武",
+    "pnl": 50,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 8,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 7,
+    "player_name": "中",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 8,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 7,
+    "player_name": "我是你爸",
+    "pnl": 110,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 8,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 7,
+    "player_name": "大舅哥",
+    "pnl": -155,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 8,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 7,
+    "player_name": "帥潮",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 8,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 8,
+    "player_name": "強的可怕",
+    "pnl": -47.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 9,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 8,
+    "player_name": "KK之王",
+    "pnl": -67.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 9,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 8,
+    "player_name": "淡水金城武",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 9,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 8,
+    "player_name": "中",
+    "pnl": -102.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 9,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 8,
+    "player_name": "我是你爸",
+    "pnl": 377.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 9,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 8,
+    "player_name": "大舅哥",
+    "pnl": -10,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 9,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 8,
+    "player_name": "帥潮",
+    "pnl": 100,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 9,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 9,
+    "player_name": "強的可怕",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 10,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 9,
+    "player_name": "KK之王",
+    "pnl": -37.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 10,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 9,
+    "player_name": "淡水金城武",
+    "pnl": -25,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 10,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 9,
+    "player_name": "中",
+    "pnl": -42.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 10,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 9,
+    "player_name": "我是你爸",
+    "pnl": 265,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 10,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 9,
+    "player_name": "大舅哥",
+    "pnl": -85,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 10,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 9,
+    "player_name": "帥潮",
+    "pnl": 175,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 10,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 10,
+    "player_name": "強的可怕",
+    "pnl": 137,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 11,
+    "session_status": "WARNING"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 10,
+    "player_name": "KK之王",
+    "pnl": -22.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 11,
+    "session_status": "WARNING"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 10,
+    "player_name": "淡水金城武",
+    "pnl": 80,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 11,
+    "session_status": "WARNING"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 10,
+    "player_name": "中",
+    "pnl": -65,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 11,
+    "session_status": "WARNING"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 10,
+    "player_name": "我是你爸",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 11,
+    "session_status": "WARNING"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 10,
+    "player_name": "大舅哥",
+    "pnl": 117.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 11,
+    "session_status": "WARNING"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 10,
+    "player_name": "帥潮",
+    "pnl": 2.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 11,
+    "session_status": "WARNING"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 11,
+    "player_name": "強的可怕",
+    "pnl": 270,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 12,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 11,
+    "player_name": "KK之王",
+    "pnl": -70,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 12,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 11,
+    "player_name": "淡水金城武",
+    "pnl": -60,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 12,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 11,
+    "player_name": "中",
+    "pnl": -70,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 12,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 11,
+    "player_name": "我是你爸",
+    "pnl": -70,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 12,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 11,
+    "player_name": "大舅哥",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 12,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 11,
+    "player_name": "帥潮",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 12,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 12,
+    "player_name": "強的可怕",
+    "pnl": 50,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 13,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 12,
+    "player_name": "KK之王",
+    "pnl": 160,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 13,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 12,
+    "player_name": "淡水金城武",
+    "pnl": -35,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 13,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 12,
+    "player_name": "中",
+    "pnl": 72.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 13,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 12,
+    "player_name": "我是你爸",
+    "pnl": -122.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 13,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 12,
+    "player_name": "大舅哥",
+    "pnl": 125,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 13,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 12,
+    "player_name": "帥潮",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 13,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 13,
+    "player_name": "強的可怕",
+    "pnl": 27.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 14,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 13,
+    "player_name": "KK之王",
+    "pnl": 75,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 14,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 13,
+    "player_name": "淡水金城武",
+    "pnl": 125,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 14,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 13,
+    "player_name": "中",
+    "pnl": -20,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 14,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 13,
+    "player_name": "我是你爸",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 14,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 13,
+    "player_name": "大舅哥",
+    "pnl": 25,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 14,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 13,
+    "player_name": "帥潮",
+    "pnl": 17.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 14,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 14,
+    "player_name": "強的可怕",
+    "pnl": 0,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 15,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 14,
+    "player_name": "KK之王",
+    "pnl": 177.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 15,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 14,
+    "player_name": "淡水金城武",
+    "pnl": 50,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 15,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 14,
+    "player_name": "中",
+    "pnl": -250,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 15,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 14,
+    "player_name": "我是你爸",
+    "pnl": 62.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 15,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 14,
+    "player_name": "大舅哥",
+    "pnl": 12.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 15,
+    "session_status": "VALID"
+  },
+  {
+    "game_date": "2026-08-15",
+    "session_number": 14,
+    "player_name": "帥潮",
+    "pnl": -52.5,
+    "participated": true,
+    "source_sheet": "260815",
+    "source_row": 15,
+    "session_status": "VALID"
+  }
+]
