@@ -110,7 +110,7 @@ export function Dashboard({ records }: DashboardProps) {
 
   if (dashboard.filteredRecords.length === 0) {
     return (
-      <main className="dashboard-shell">
+      <main className="dashboard-shell" id="main-content">
         <div className="empty-state">
           <h1>這段期間沒有戰績。</h1>
         </div>
@@ -119,7 +119,7 @@ export function Dashboard({ records }: DashboardProps) {
   }
 
   return (
-    <main className="dashboard-shell">
+    <main className="dashboard-shell" id="main-content">
       <section className="dashboard-header">
         <div>
           <div className="eyebrow">PRIVATE TABLE · PERFORMANCE</div>

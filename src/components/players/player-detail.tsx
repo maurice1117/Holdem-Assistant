@@ -115,7 +115,7 @@ export function PlayerDetail({ playerName, records }: PlayerDetailProps) {
       : formatDateLong(selectedDate);
 
   return (
-    <main className="dashboard-shell">
+    <main className="dashboard-shell" id="main-content">
       <section className="dashboard-header player-header">
         <div>
           <Link href="/" className="back-link">

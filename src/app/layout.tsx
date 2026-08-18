@@ -25,6 +25,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="zh-Hant" className={`${geist.variable} ${geistMono.variable}`}>
       <body>
+        <a className="skip-link" href="#main-content">
+          跳至主要內容
+        </a>
         <header className="topbar">
           <div className="topbar-inner">
             <div className="brand">

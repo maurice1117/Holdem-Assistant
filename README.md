@@ -85,6 +85,15 @@ pnpm test:watch
 
 基準資料包含 148 筆玩家局次紀錄、25 局、3 個遊戲日與 10 位玩家；BB 固定為 5。
 
+### 更新資料
+
+1. 僅從原始活頁簿的 `Clean_SessionResults` 工作表匯出資料，並更新 `src/data/session-results.json`。
+2. 每筆資料需保留 `game_date`、`session_number`、`player_name`、`pnl`、`participated`；`source_sheet`、`source_row` 與 `session_status` 可保留作為資料血緣。
+3. 不要排除或修改 `WARNING` 紀錄，也不要為了平衡損益修改數值。
+4. 執行 `pnpm test`、`pnpm typecheck` 與 `pnpm build`。測試會驗證資料格式、重複紀錄、局次數量與主要統計。
+
+目前的資料展示層會將別名 `Kai` 合併至「大舅哥」，但來源 JSON 中的原始名稱保持不變。
+
 ## 主要程式位置
 
 - `src/lib/data.ts`：日期、玩家、局次與遊戲日資料整理

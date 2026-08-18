@@ -62,7 +62,7 @@ export function SessionsPage({ records }: SessionsPageProps) {
   };
 
   return (
-    <main className="dashboard-shell">
+    <main className="dashboard-shell" id="main-content">
       <section className="dashboard-header sessions-header">
         <div>
           <div className="eyebrow">TABLE HISTORY</div>
@@ -114,8 +114,8 @@ export function SessionsPage({ records }: SessionsPageProps) {
               <ListOrdered size={14} aria-hidden="true" />
               SESSION HISTORY
             </div>
-            <h2>{sessions.length} 局</h2>
-            <p>依最新局次排序；點選列可展開詳細戰績</p>
+            <h2 aria-live="polite">{sessions.length} 局</h2>
+            <p>依最新局次排序；點選列或使用 Enter／空白鍵可展開詳細戰績</p>
           </div>
         </div>
         {sessions.length === 0 ? (
@@ -165,7 +165,18 @@ function SessionRow({
 }) {
   return (
     <>
-      <tr className="session-summary-row" onClick={onToggle}>
+      <tr
+        className="session-summary-row"
+        tabIndex={0}
+        aria-expanded={isExpanded}
+        onClick={onToggle}
+        onKeyDown={(event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            onToggle();
+          }
+        }}
+      >
         <td>{formatDateShort(session.gameDate)}</td>
         <td>第{session.sessionNumber}局</td>
         <td className="sessions-cell"><Users size={13} aria-hidden="true" /> {session.participantCount}</td>

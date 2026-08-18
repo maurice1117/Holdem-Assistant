@@ -160,7 +160,13 @@ export default function EquityChart({
         {selectedPlayers.map((player) => {
           const index = playerIndex.get(player) ?? 0;
           return (
-            <button type="button" key={player} onClick={() => onTogglePlayer(player)}>
+            <button
+              type="button"
+              key={player}
+              aria-pressed="true"
+              aria-label={`隱藏 ${player} 的累積戰績`}
+              onClick={() => onTogglePlayer(player)}
+            >
               <span style={{ backgroundColor: SERIES_COLORS[index % SERIES_COLORS.length] }} />
               {player}
             </button>
