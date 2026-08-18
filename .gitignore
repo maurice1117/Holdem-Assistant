@@ -229,3 +229,4 @@ coverage/
 # The Python template above ignores every directory named lib.
 !src/lib/
 !src/lib/**
+.vercel

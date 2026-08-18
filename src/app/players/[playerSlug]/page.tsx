@@ -12,7 +12,7 @@ interface PlayerPageProps {
 
 export function generateStaticParams() {
   return getPlayers(sessionResults).map((playerName) => ({
-    playerSlug: encodeURIComponent(playerName),
+    playerSlug: playerName,
   }));
 }
 
