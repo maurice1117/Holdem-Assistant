@@ -219,6 +219,9 @@ __marimo__/
 
 # Node / TypeScript
 node_modules/
+.next/
+next-env.d.ts
+*.tsbuildinfo
 .pnpm-store/
 .tmp-spreadsheet/
 coverage/

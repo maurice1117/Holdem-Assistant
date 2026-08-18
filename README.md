@@ -1,13 +1,33 @@
 # Holdem Assistant
 
-朋友間德州撲克戰績 Dashboard。專案目前完成 PRD 的 Phase 1：資料匯出、Schema 驗證、統計工具與單元測試；網頁介面將於 Phase 2 實作。
+朋友間德州撲克戰績 Dashboard。專案目前完成 PRD 的 Phase 1 資料層，以及 Phase 2 戰績總覽、KPI、排行榜、累積曲線與日期篩選。
 
 ## 環境需求
 
-- Node.js 20 以上
+- Node.js 22 以上
 - pnpm 11
 
 ## 執行步驟
+
+### Windows 首次設定
+
+如果 PowerShell 無法辨識 `node` 或 `pnpm`，先執行：
+
+```powershell
+winget install -e --id OpenJS.NodeJS.LTS
+winget install -e --id pnpm.pnpm
+```
+
+安裝完成後關閉並重新開啟 PowerShell，再確認：
+
+```powershell
+node --version
+pnpm --version
+```
+
+如果電腦沒有 `winget`，可改從 [Node.js 官方網站](https://nodejs.org/en/download/) 安裝 LTS 版，再依 [pnpm 官方安裝說明](https://pnpm.io/installation) 安裝 pnpm。
+
+### 啟動專案
 
 1. 安裝相依套件：
 
@@ -15,19 +35,33 @@
    pnpm install
    ```
 
-2. 執行 TypeScript 型別檢查：
+2. 啟動本機開發網站：
+
+   ```bash
+   pnpm dev
+   ```
+
+   瀏覽器開啟 `http://localhost:3000`。
+
+3. 執行 TypeScript 型別檢查：
 
    ```bash
    pnpm typecheck
    ```
 
-3. 執行單元測試與資料驗收：
+4. 執行單元測試與資料驗收：
 
    ```bash
    pnpm test
    ```
 
-4. 開發時若要持續監看測試：
+5. 建立 production build：
+
+   ```bash
+   pnpm build
+   ```
+
+6. 開發時若要持續監看測試：
 
    ```bash
    pnpm test:watch
