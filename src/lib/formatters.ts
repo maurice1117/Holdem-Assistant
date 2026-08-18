@@ -22,6 +22,10 @@ export function formatPnl(value: number): string {
   return formatSigned(value, numberFormatter);
 }
 
+export function formatNumber(value: number): string {
+  return numberFormatter.format(value);
+}
+
 export function formatBb100(value: number | null): string {
   return value === null ? "—" : formatSigned(value, bb100Formatter);
 }

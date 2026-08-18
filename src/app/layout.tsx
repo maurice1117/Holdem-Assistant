@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Link from "next/link";
 import { LayoutDashboard, ListOrdered, Spade } from "lucide-react";
 
 import "./globals.css";
@@ -32,10 +33,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <span>Holdem Room</span>
             </div>
             <nav className="primary-nav" aria-label="主要導覽">
-              <span className="nav-item nav-item-active" aria-current="page">
+              <Link href="/" className="nav-item nav-item-active">
                 <LayoutDashboard size={16} />
                 戰績總覽
-              </span>
+              </Link>
               <span className="nav-item nav-item-disabled" aria-disabled="true">
                 <ListOrdered size={16} />
                 每局紀錄

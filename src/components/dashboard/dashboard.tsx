@@ -28,6 +28,7 @@ import {
 } from "@/lib/metrics";
 import type { SessionResult } from "@/types/poker";
 
+import { GameDayHeatmap } from "./game-day-heatmap";
 import { KpiCard } from "./kpi-card";
 import { Leaderboard } from "./leaderboard";
 
@@ -83,6 +84,7 @@ export function Dashboard({ records }: DashboardProps) {
       bb100Champion,
       bb100Leaderboard,
       curve: getEquityCurve(filteredRecords),
+      dateRange,
       filteredRecords,
       largestLossCount,
       largestLossValue,
@@ -263,6 +265,8 @@ export function Dashboard({ records }: DashboardProps) {
           metric="bb100"
         />
       </div>
+
+      <GameDayHeatmap records={records} dateRange={dashboard.dateRange} />
     </main>
   );
 }

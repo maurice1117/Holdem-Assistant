@@ -1,6 +1,28 @@
 # Holdem Assistant
 
-朋友間德州撲克戰績 Dashboard。專案目前完成 PRD 的 Phase 1 資料層，以及 Phase 2 戰績總覽、KPI、排行榜、累積曲線與日期篩選。
+朋友間德州撲克戰績儀表板，將每局的玩家損益整理成可篩選的戰績總覽、排行與個人分析頁。
+
+## 已完成功能
+
+### Phase 1：資料與統計層
+
+- 讀取靜態 JSON 資料，並以 Zod 驗證資料格式與重複紀錄。
+- 提供 P&L、BB/100、勝率、平均損益、回撤、連勝／連敗與爆掉次數等統計。
+- 保留 `WARNING` 紀錄原始數值，並照常納入統計。
+
+### Phase 2：戰績總覽
+
+- 全站日期篩選與核心 KPI。
+- 玩家累積 P&L 曲線。
+- 總 P&L 與 BB/100 排行榜，並標示樣本不足的玩家。
+
+### Phase 3：玩家分析
+
+- 遊戲日／玩家熱圖，可快速比較每天的損益。
+- 從排行榜與熱圖直接進入玩家個人頁。
+- 個人累積 P&L、每日 P&L 圖表與主要戰績指標。
+- 進階統計：高點、目前／最大回撤、標準差、連勝／連敗、爆掉次數。
+- 可篩選、排序的玩家局次紀錄。
 
 ## 環境需求
 
@@ -18,54 +40,35 @@ winget install -e --id OpenJS.NodeJS.LTS
 winget install -e --id pnpm.pnpm
 ```
 
-安裝完成後關閉並重新開啟 PowerShell，再確認：
+安裝完成後，重新開啟 PowerShell，再確認版本：
 
 ```powershell
 node --version
 pnpm --version
 ```
 
-如果電腦沒有 `winget`，可改從 [Node.js 官方網站](https://nodejs.org/en/download/) 安裝 LTS 版，再依 [pnpm 官方安裝說明](https://pnpm.io/installation) 安裝 pnpm。
+若電腦沒有 `winget`，可改從 [Node.js 官方網站](https://nodejs.org/en/download/) 安裝 LTS 版，再依 [pnpm 官方安裝說明](https://pnpm.io/installation) 安裝 pnpm。
 
-### 啟動專案
+### 啟動與驗證
 
-1. 安裝相依套件：
+```bash
+pnpm install
+pnpm dev
+```
 
-   ```bash
-   pnpm install
-   ```
+在瀏覽器開啟 `http://localhost:3000`。
 
-2. 啟動本機開發網站：
+```bash
+pnpm typecheck
+pnpm test
+pnpm build
+```
 
-   ```bash
-   pnpm dev
-   ```
+開發時若要持續監看測試：
 
-   瀏覽器開啟 `http://localhost:3000`。
-
-3. 執行 TypeScript 型別檢查：
-
-   ```bash
-   pnpm typecheck
-   ```
-
-4. 執行單元測試與資料驗收：
-
-   ```bash
-   pnpm test
-   ```
-
-5. 建立 production build：
-
-   ```bash
-   pnpm build
-   ```
-
-6. 開發時若要持續監看測試：
-
-   ```bash
-   pnpm test:watch
-   ```
+```bash
+pnpm test:watch
+```
 
 ## 資料來源
 
@@ -73,12 +76,13 @@ pnpm --version
 - 唯一使用的工作表：`Clean_SessionResults`
 - Runtime static JSON：`src/data/session-results.json`
 
-目前基準資料包含 148 筆玩家局次紀錄、25 局、3 個遊戲日與 10 位玩家。`WARNING` 紀錄會保留原值並照常納入統計。
+基準資料包含 148 筆玩家局次紀錄、25 局、3 個遊戲日與 10 位玩家；BB 固定為 5。
 
-## Phase 1 主要檔案
+## 主要程式位置
 
-- `src/types/poker.ts`：資料與統計型別
-- `src/config/game.ts`：BB、排行榜門檻與爆掉門檻
-- `src/lib/validation.ts`：Zod Schema 與重複資料偵測
-- `src/lib/data.ts`：日期、玩家與局次資料整理
-- `src/lib/metrics.ts`：P&L、BB/100、勝率、回撤、連勝敗等統計
+- `src/lib/data.ts`：日期、玩家、局次與遊戲日資料整理
+- `src/lib/metrics.ts`：統計計算
+- `src/components/dashboard/`：總覽、排行榜與熱圖
+- `src/app/players/[playerSlug]/page.tsx`：玩家個人頁路由
+- `src/components/players/player-detail.tsx`：玩家個人分析頁
+- `src/components/charts/`：總覽與玩家圖表

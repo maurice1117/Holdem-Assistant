@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { BadgeCheck } from "lucide-react";
 
 import { formatBb100, formatPnl } from "@/lib/formatters";
+import { getPlayerHref } from "@/lib/routes";
 import type { RankedPlayerStats } from "@/types/poker";
 
 interface LeaderboardProps {
@@ -34,7 +36,7 @@ function LeaderboardRows({
         </td>
         <th scope="row">
           <span className="player-cell">
-            {entry.playerName}
+            <Link href={getPlayerHref(entry.playerName)}>{entry.playerName}</Link>
             {!entry.isQualified ? (
               <span className="sample-badge">樣本不足 · {entry.playedSessions}局</span>
             ) : null}
