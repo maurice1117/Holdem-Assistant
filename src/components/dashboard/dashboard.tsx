@@ -2,8 +2,6 @@
 
 import { useMemo, useState } from "react";
 import {
-  ArrowDownRight,
-  ArrowUpRight,
   CalendarDays,
   Check,
   ChevronDown,
@@ -20,7 +18,7 @@ import {
   getPlayers,
   getSessions,
 } from "@/lib/data";
-import { formatBb100, formatDateLong, formatDateShort, formatPnl } from "@/lib/formatters";
+import { formatBb100, formatDateLong, formatPnl } from "@/lib/formatters";
 import {
   getBb100Leaderboard,
   getEquityCurve,
@@ -41,12 +39,6 @@ import { StabilityLeaderboard } from "./stability-leaderboard";
 
 interface DashboardProps {
   records: SessionResult[];
-}
-
-function valueTone(value: number): "profit" | "loss" | "neutral" {
-  if (value > 0) return "profit";
-  if (value < 0) return "loss";
-  return "neutral";
 }
 
 export function Dashboard({ records }: DashboardProps) {
@@ -78,18 +70,6 @@ export function Dashboard({ records }: DashboardProps) {
     const bb100Leaderboard = getBb100Leaderboard(filteredRecords);
     const pnlChampion = pnlLeaderboard[0] ?? null;
     const bb100Champion = bb100Leaderboard.find((entry) => entry.isQualified) ?? null;
-    const largestWin = filteredRecords.reduce<SessionResult | null>(
-      (best, record) => (!best || record.pnl > best.pnl ? record : best),
-      null,
-    );
-    const largestLossValue = filteredRecords.reduce(
-      (worst, record) => Math.min(worst, record.pnl),
-      Number.POSITIVE_INFINITY,
-    );
-    const largestLossCount = filteredRecords.filter(
-      (record) => record.pnl === largestLossValue,
-    ).length;
-
     return {
       activePlayers,
       bb100Champion,
@@ -97,9 +77,6 @@ export function Dashboard({ records }: DashboardProps) {
       curve: getEquityCurve(filteredRecords),
       dateRange,
       filteredRecords,
-      largestLossCount,
-      largestLossValue,
-      largestWin,
       pnlChampion,
       pnlLeaderboard,
       recentForm:
@@ -139,7 +116,7 @@ export function Dashboard({ records }: DashboardProps) {
       <section className="dashboard-header">
         <div>
           <div className="eyebrow">PRIVATE TABLE · PERFORMANCE</div>
-          <h1>德州撲克戰績</h1>
+          <h1>德州撲克戰績分析</h1>
           <p>
             {dateSubtitle} · BB NT${GAME_CONFIG.bigBlind}
           </p>
@@ -216,28 +193,6 @@ export function Dashboard({ records }: DashboardProps) {
           icon={<Trophy size={18} />}
           tone="accent"
         />
-        <KpiCard
-          label="最大單局勝利"
-          value={dashboard.largestWin ? formatPnl(dashboard.largestWin.pnl) : "—"}
-          detail={
-            dashboard.largestWin
-              ? `${dashboard.largestWin.player_name} · ${formatDateShort(dashboard.largestWin.game_date)} 第${dashboard.largestWin.session_number}局`
-              : "—"
-          }
-          icon={<ArrowUpRight size={18} />}
-          tone={dashboard.largestWin ? valueTone(dashboard.largestWin.pnl) : "neutral"}
-        />
-        <KpiCard
-          label="最大單局虧損"
-          value={
-            Number.isFinite(dashboard.largestLossValue)
-              ? formatPnl(dashboard.largestLossValue)
-              : "—"
-          }
-          detail={`${dashboard.largestLossCount} 次出現`}
-          icon={<ArrowDownRight size={18} />}
-          tone="loss"
-        />
       </section>
 
       {latestSummary ? <LatestGameSummary summary={latestSummary} /> : null}
@@ -301,22 +256,36 @@ export function Dashboard({ records }: DashboardProps) {
 
       <StabilityLeaderboard entries={dashboard.stabilityLeaderboard} />
 
-      <div className="leaderboard-grid">
-        <Leaderboard
-          title="總損益排行榜"
-          subtitle="依期間累積損益排序"
-          entries={dashboard.pnlLeaderboard}
-          metric="pnl"
-        />
-        <Leaderboard
-          title="每 100 局大盲注收益排行榜"
-          subtitle={`正式排名門檻 · 至少 ${GAME_CONFIG.minBb100Sessions} 局`}
-          entries={dashboard.bb100Leaderboard}
-          metric="bb100"
-        />
-      </div>
-
-      <GameDayHeatmap records={records} dateRange={dashboard.dateRange} />
+      <details className="secondary-analysis">
+        <summary>
+          <span>
+            <strong>完整數據</strong>
+            <small>總損益、每 100 局收益與每日戰績</small>
+          </span>
+          <span className="secondary-analysis-action">
+            <span className="secondary-analysis-expand-label">展開查看</span>
+            <span className="secondary-analysis-collapse-label">收合內容</span>
+            <ChevronDown size={16} aria-hidden="true" />
+          </span>
+        </summary>
+        <div className="secondary-analysis-content">
+          <div className="leaderboard-grid">
+            <Leaderboard
+              title="總損益排行榜"
+              subtitle="依期間累積損益排序"
+              entries={dashboard.pnlLeaderboard}
+              metric="pnl"
+            />
+            <Leaderboard
+              title="每 100 局大盲注收益排行榜"
+              subtitle={`正式排名門檻 · 至少 ${GAME_CONFIG.minBb100Sessions} 局`}
+              entries={dashboard.bb100Leaderboard}
+              metric="bb100"
+            />
+          </div>
+          <GameDayHeatmap records={records} dateRange={dashboard.dateRange} />
+        </div>
+      </details>
     </main>
   );
 }

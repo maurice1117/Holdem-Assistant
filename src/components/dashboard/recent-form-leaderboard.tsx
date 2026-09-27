@@ -38,7 +38,7 @@ export function RecentFormLeaderboard({
             <Activity size={14} aria-hidden="true" />
             RECENT FORM
           </div>
-          <h2>近期戰力榜</h2>
+          <h2>近期表現</h2>
           <p>每位玩家最近 {window} 局；趨勢為相較前一段的平均每局變化</p>
         </div>
       </div>

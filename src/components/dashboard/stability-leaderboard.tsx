@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ShieldCheck } from "lucide-react";
+import { ChevronDown, ShieldCheck } from "lucide-react";
 
 import { GAME_CONFIG } from "@/config/game";
 import { formatNumber, formatPercent, formatPnl } from "@/lib/formatters";
@@ -15,6 +15,7 @@ function formatProfitFactor(value: number | null): string {
 export function StabilityLeaderboard({ entries }: { entries: RankedPlayerStats[] }) {
   const qualified = entries.filter((entry) => entry.isQualified);
   const unqualified = entries.filter((entry) => !entry.isQualified);
+  const highlights = qualified.slice(0, 3);
 
   return (
     <section className="surface leaderboard-card stability-card">
@@ -24,12 +25,34 @@ export function StabilityLeaderboard({ entries }: { entries: RankedPlayerStats[]
             <ShieldCheck size={14} aria-hidden="true" />
             RISK &amp; CONSISTENCY
           </div>
-          <h2>穩定獲利排行榜</h2>
+          <h2>風險與穩定度</h2>
           <p>賺賠比＝總獲利 ÷ 總虧損；正式排名需至少 {GAME_CONFIG.minBb100Sessions} 局且總損益為正</p>
         </div>
       </div>
-      <div className="table-scroll">
-        <table className="leaderboard-table stability-table">
+      <div className="stability-highlights" aria-label="穩定度前三名">
+        {highlights.map((entry) => (
+          <Link href={getPlayerHref(entry.playerName)} className="stability-highlight" key={entry.playerName}>
+            <span className="rank" data-rank={entry.rank ?? undefined}>#{entry.rank}</span>
+            <span className="stability-highlight-player">{entry.playerName}</span>
+            <span>
+              <small>賺賠比</small>
+              <strong>{formatProfitFactor(entry.profitFactor)}</strong>
+            </span>
+            <span>
+              <small>最大回撤</small>
+              <strong className="loss-value">{formatPnl(-entry.maxDrawdown)}</strong>
+            </span>
+          </Link>
+        ))}
+      </div>
+      <details className="recent-details">
+        <summary>
+          查看完整風險數據
+          <span>{entries.length} 位玩家</span>
+          <ChevronDown size={15} aria-hidden="true" />
+        </summary>
+        <div className="table-scroll">
+          <table className="leaderboard-table stability-table">
           <thead>
             <tr>
               <th scope="col">排名</th>
@@ -50,8 +73,9 @@ export function StabilityLeaderboard({ entries }: { entries: RankedPlayerStats[]
               />
             ))}
           </tbody>
-        </table>
-      </div>
+          </table>
+        </div>
+      </details>
     </section>
   );
 }
