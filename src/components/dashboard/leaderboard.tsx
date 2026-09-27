@@ -77,7 +77,7 @@ export function Leaderboard({ title, subtitle, entries, metric }: LeaderboardPro
               <th scope="col">排名</th>
               <th scope="col">玩家</th>
               <th scope="col">局數</th>
-              <th scope="col">{metric === "pnl" ? "P&L (NT$)" : "BB/100局"}</th>
+              <th scope="col">{metric === "pnl" ? "損益 (NT$)" : "每 100 局 BB"}</th>
             </tr>
           </thead>
           <tbody>

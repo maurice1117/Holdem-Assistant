@@ -118,7 +118,7 @@ export function PlayerEquityChart({ points }: PlayerEquityChartProps) {
   }
 
   return (
-    <div className="detail-chart" role="img" aria-label="玩家累積 P&L 折線圖">
+    <div className="detail-chart" role="img" aria-label="玩家累積損益折線圖">
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data} margin={{ top: 16, right: 14, left: 0, bottom: 6 }} accessibilityLayer>
           <CartesianGrid stroke="#1b2532" vertical={false} />
@@ -194,7 +194,7 @@ export function PlayerDailyChart({ results }: PlayerDailyChartProps) {
   }
 
   return (
-    <div className="detail-chart compact" role="img" aria-label="玩家每日 P&L 長條圖">
+    <div className="detail-chart compact" role="img" aria-label="玩家每日損益長條圖">
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data} margin={{ top: 12, right: 14, left: 0, bottom: 6 }} accessibilityLayer>
           <CartesianGrid stroke="#1b2532" vertical={false} />
@@ -223,7 +223,7 @@ export function PlayerDailyChart({ results }: PlayerDailyChartProps) {
                   <div className="tooltip-date">{row.gameDate.replaceAll("-", "/")}</div>
                   <div className="tooltip-players">
                     <div className="tooltip-player">
-                      <strong>P&amp;L</strong>
+                      <strong>損益</strong>
                       <span className={row.pnl >= 0 ? "profit-value" : "loss-value"}>
                         {formatPnl(row.pnl)}
                       </span>

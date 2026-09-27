@@ -112,7 +112,7 @@ export default function EquityChart({
 
   return (
     <>
-      <div className="equity-chart" role="img" aria-label="玩家累積 P&L 折線圖">
+      <div className="equity-chart" role="img" aria-label="玩家累積損益折線圖">
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={chartData} margin={{ top: 20, right: 14, left: 0, bottom: 6 }} accessibilityLayer>
             <CartesianGrid stroke="#1b2532" vertical={false} />

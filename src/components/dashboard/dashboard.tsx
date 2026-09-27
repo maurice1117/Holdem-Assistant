@@ -203,7 +203,7 @@ export function Dashboard({ records }: DashboardProps) {
           tone="accent"
         />
         <KpiCard
-          label="BB/100 王者"
+          label="每 100 局收益王"
           value={dashboard.bb100Champion?.playerName ?? "—"}
           detail={
             dashboard.bb100Champion
@@ -242,7 +242,7 @@ export function Dashboard({ records }: DashboardProps) {
           <div>
             <div className="section-kicker">PERFORMANCE CURVE</div>
             <h2>累積戰績</h2>
-            <p>預設顯示總 P&amp;L 前 3 名 · 可從右側自由比較</p>
+            <p>預設顯示總損益前 3 名 · 可從右側自由比較</p>
           </div>
           <details className="player-selector">
             <summary>
@@ -298,13 +298,13 @@ export function Dashboard({ records }: DashboardProps) {
 
       <div className="leaderboard-grid">
         <Leaderboard
-          title="總 P&L 排行榜"
+          title="總損益排行榜"
           subtitle="依期間累積損益排序"
           entries={dashboard.pnlLeaderboard}
           metric="pnl"
         />
         <Leaderboard
-          title="BB/100 排行榜"
+          title="每 100 局大盲注收益排行榜"
           subtitle={`正式排名門檻 · 至少 ${GAME_CONFIG.minBb100Sessions} 局`}
           entries={dashboard.bb100Leaderboard}
           metric="bb100"

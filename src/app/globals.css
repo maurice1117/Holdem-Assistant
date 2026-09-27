@@ -725,6 +725,76 @@ input:checked + .custom-checkbox {
   white-space: nowrap;
 }
 
+.comparison-selector-card,
+.comparison-metrics-card {
+  margin-top: 16px;
+  padding: 21px;
+}
+
+.comparison-player-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.comparison-player {
+  display: flex;
+  min-height: 42px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: #101721;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 12px;
+  text-align: left;
+}
+
+.comparison-player.selected {
+  border-color: rgba(214, 179, 90, 0.52);
+  background: rgba(214, 179, 90, 0.08);
+  color: var(--text);
+}
+
+.comparison-player.selected .custom-checkbox {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #0a0d11;
+}
+
+.comparison-player:disabled {
+  cursor: not-allowed;
+  opacity: 0.56;
+}
+
+.comparison-shared,
+.comparison-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.comparison-table {
+  min-width: 880px;
+}
+
+.comparison-chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.comparison-legend-item i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
 .leaderboard-card {
   min-width: 0;
   padding: 21px;
@@ -1304,10 +1374,18 @@ input:checked + .custom-checkbox {
   .session-detail {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  .comparison-player-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 820px) {
   .leaderboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comparison-chart-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1358,6 +1436,10 @@ input:checked + .custom-checkbox {
 
   .dashboard-filters {
     justify-content: flex-start;
+  }
+
+  .comparison-player-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .select-wrap {

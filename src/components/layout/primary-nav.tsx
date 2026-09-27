@@ -1,12 +1,13 @@
 "use client";
 
 import Link from "next/link";
-import { LayoutDashboard, ListOrdered } from "lucide-react";
+import { GitCompareArrows, LayoutDashboard, ListOrdered } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 const navigationItems = [
   { href: "/", label: "戰績總覽", icon: LayoutDashboard },
   { href: "/sessions", label: "每局紀錄", icon: ListOrdered },
+  { href: "/compare", label: "玩家比較", icon: GitCompareArrows },
 ];
 
 export function PrimaryNav() {

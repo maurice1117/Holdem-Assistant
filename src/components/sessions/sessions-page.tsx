@@ -67,7 +67,7 @@ export function SessionsPage({ records }: SessionsPageProps) {
         <div>
           <div className="eyebrow">TABLE HISTORY</div>
           <h1>每局紀錄</h1>
-          <p>展開任一局，查看同桌所有玩家的 P&amp;L</p>
+          <p>展開任一局，查看同桌所有玩家的損益</p>
         </div>
         <div className="session-filters" aria-label="每局紀錄篩選">
           <label className="date-filter">

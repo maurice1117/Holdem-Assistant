@@ -180,14 +180,14 @@ export function PlayerDetail({ playerName, records }: PlayerDetailProps) {
         <>
           <section className="kpi-grid player-kpi-grid" aria-label="玩家主要戰績">
             <KpiCard
-              label="Total P&L"
+              label="總損益"
               value={formatPnl(detail.stats.totalPnl)}
               detail="NT$"
               icon={<Trophy size={18} />}
               tone={valueTone(detail.stats.totalPnl)}
             />
             <KpiCard
-              label="BB/100局"
+              label="每 100 局大盲注收益"
               value={formatBb100(detail.stats.bb100)}
               detail={
                 detail.stats.playedSessions < GAME_CONFIG.minBb100Sessions
@@ -210,28 +210,28 @@ export function PlayerDetail({ playerName, records }: PlayerDetailProps) {
               icon={<Percent size={18} />}
             />
             <KpiCard
-              label="Avg P&L / 局"
+              label="平均每局損益"
               value={detail.stats.averagePnl === null ? "—" : `${formatPnl(detail.stats.averagePnl)} / 局`}
               detail="平均單局損益"
               icon={<Gauge size={18} />}
               tone={valueTone(detail.stats.averagePnl)}
             />
             <KpiCard
-              label="Max Drawdown"
+              label="最大回撤"
               value={`NT$${formatPnl(detail.stats.maxDrawdown).replace("+", "")}`}
               detail="歷史高點至低點"
               icon={<ArrowDownRight size={18} />}
               tone="loss"
             />
             <KpiCard
-              label="Best Session"
+              label="最佳單局"
               value={detail.stats.bestSession ? formatPnl(detail.stats.bestSession.pnl) : "—"}
               detail={sessionDetail(detail.stats.bestSession)}
               icon={<ArrowUpRight size={18} />}
               tone="profit"
             />
             <KpiCard
-              label="Worst Session"
+              label="最差單局"
               value={detail.stats.worstSession ? formatPnl(detail.stats.worstSession.pnl) : "—"}
               detail={sessionDetail(detail.stats.worstSession)}
               icon={<ArrowDownRight size={18} />}
@@ -256,7 +256,7 @@ export function PlayerDetail({ playerName, records }: PlayerDetailProps) {
                 <div>
                   <div className="section-kicker">GAME DAY</div>
                   <h2>日別戰績</h2>
-                  <p>每個遊戲日的累積 P&amp;L</p>
+                  <p>每個遊戲日的累積損益</p>
                 </div>
               </div>
               <PlayerDailyChartShell results={detail.dailyResults} />
@@ -269,7 +269,7 @@ export function PlayerDetail({ playerName, records }: PlayerDetailProps) {
                 <div>
                   <div className="section-kicker">RECENT MOMENTUM</div>
                   <h2>5 局移動平均</h2>
-                  <p>單局 P&amp;L 與近期平均走勢</p>
+                  <p>單局損益與近期平均走勢</p>
                 </div>
               </div>
               <PlayerMovingAverageChartShell points={detail.trend} />
@@ -295,13 +295,13 @@ export function PlayerDetail({ playerName, records }: PlayerDetailProps) {
               </div>
             </div>
             <div className="advanced-grid">
-              <StatPill label="Peak P&L" value={formatPnl(detail.stats.peakPnl)} />
+              <StatPill label="歷史最高累積損益" value={formatPnl(detail.stats.peakPnl)} />
               <StatPill
-                label="Current Drawdown"
+                label="目前距離最高點"
                 value={`NT$${formatPnl(detail.stats.currentDrawdown).replace("+", "")}`}
               />
               <StatPill
-                label="Max Drawdown"
+                label="最大回撤"
                 value={`NT$${formatPnl(detail.stats.maxDrawdown).replace("+", "")}`}
               />
               <StatPill
@@ -309,7 +309,7 @@ export function PlayerDetail({ playerName, records }: PlayerDetailProps) {
                 value={detail.stats.sessionStdDev === null ? "—" : formatNumber(detail.stats.sessionStdDev)}
               />
               <StatPill
-                label="BB/100 標準差"
+                label="每 100 局收益波動"
                 value={detail.stats.stdBB100 === null ? "—" : formatNumber(detail.stats.stdBB100)}
               />
               <StatPill label="最長連勝" value={`${detail.stats.longestWinStreak} 連勝`} />
@@ -324,7 +324,7 @@ export function PlayerDetail({ playerName, records }: PlayerDetailProps) {
               <div>
                 <div className="section-kicker">SESSION LOG</div>
                 <h2>玩家每局紀錄</h2>
-                <p>最新至最舊，可依結果與 P&amp;L 篩選</p>
+                <p>最新至最舊，可依結果與損益篩選</p>
               </div>
               <div className="history-controls">
                 <label>
@@ -340,7 +340,7 @@ export function PlayerDetail({ playerName, records }: PlayerDetailProps) {
                   排序
                   <select value={sortKey} onChange={(event) => setSortKey(event.target.value as SortKey)}>
                     <option value="date">日期</option>
-                    <option value="pnl">P&L</option>
+                    <option value="pnl">損益</option>
                   </select>
                 </label>
               </div>
@@ -351,8 +351,8 @@ export function PlayerDetail({ playerName, records }: PlayerDetailProps) {
                   <tr>
                     <th scope="col">日期</th>
                     <th scope="col">局</th>
-                    <th scope="col">P&L</th>
-                    <th scope="col">累積 P&L</th>
+                    <th scope="col">損益</th>
+                    <th scope="col">累積損益</th>
                     <th scope="col">結果</th>
                   </tr>
                 </thead>

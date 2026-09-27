@@ -25,7 +25,7 @@ export function StabilityLeaderboard({ entries }: { entries: RankedPlayerStats[]
             RISK &amp; CONSISTENCY
           </div>
           <h2>穩定獲利排行榜</h2>
-          <p>依獲利因子排序；正式排名需至少 {GAME_CONFIG.minBb100Sessions} 局且總 P&amp;L 為正</p>
+          <p>賺賠比＝總獲利 ÷ 總虧損；正式排名需至少 {GAME_CONFIG.minBb100Sessions} 局且總損益為正</p>
         </div>
       </div>
       <div className="table-scroll">
@@ -34,8 +34,8 @@ export function StabilityLeaderboard({ entries }: { entries: RankedPlayerStats[]
             <tr>
               <th scope="col">排名</th>
               <th scope="col">玩家</th>
-              <th scope="col">獲利因子</th>
-              <th scope="col">P&amp;L 中位數</th>
+              <th scope="col" title="所有獲利加總 ÷ 所有虧損加總">賺賠比</th>
+              <th scope="col">單局損益中位數</th>
               <th scope="col">單局波動</th>
               <th scope="col">最大回撤</th>
               <th scope="col">爆掉率</th>

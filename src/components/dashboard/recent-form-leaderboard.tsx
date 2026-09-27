@@ -73,7 +73,7 @@ export function RecentFormLeaderboard({
                 <th scope="col">排名</th>
                 <th scope="col">玩家</th>
                 <th scope="col">局數</th>
-                <th scope="col">近期 P&amp;L</th>
+                <th scope="col">近期損益</th>
                 <th scope="col">平均 / 局</th>
                 <th scope="col">勝率</th>
                 <th scope="col">較前期</th>

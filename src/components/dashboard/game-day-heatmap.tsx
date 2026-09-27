@@ -44,7 +44,7 @@ export function GameDayHeatmap({ records, dateRange }: GameDayHeatmapProps) {
             GAME DAY
           </div>
           <h2>每日戰績</h2>
-          <p>玩家在各遊戲日的累積 P&amp;L · 點選玩家查看完整分析</p>
+          <p>玩家在各遊戲日的累積損益 · 點選玩家查看完整分析</p>
         </div>
       </div>
       <div className="heatmap-scroll">
@@ -78,7 +78,7 @@ export function GameDayHeatmap({ records, dateRange }: GameDayHeatmapProps) {
                         <span
                           className={`heatmap-cell ${toneClass(result.pnl)}`}
                           style={heatmapStyle(result.pnl, maxAbs)}
-                          title={`${player}\n${date}\nP&L ${formatPnl(result.pnl)}\n${result.playedSessions} 局`}
+                          title={`${player}\n${date}\n損益 ${formatPnl(result.pnl)}\n${result.playedSessions} 局`}
                         >
                           <b>{formatPnl(result.pnl)}</b>
                           <small>{result.playedSessions}局</small>
