@@ -27,22 +27,27 @@ const record = (
 
 describe("acceptance dataset", () => {
   it("contains the complete Clean_SessionResults baseline", () => {
-    expect(sessionResults).toHaveLength(148);
-    expect(getSessions(sessionResults)).toHaveLength(25);
-    expect(getGameDates(sessionResults)).toHaveLength(3);
-    expect(getPlayers(sessionResults)).toHaveLength(9);
+    expect(sessionResults).toHaveLength(332);
+    expect(getSessions(sessionResults)).toHaveLength(58);
+    expect(getGameDates(sessionResults)).toHaveLength(6);
+    expect(getPlayers(sessionResults)).toHaveLength(14);
   });
 
   it.each([
-    ["我是你爸", 14, 1035, 1478.6, 0.571, 452.5, -250, 692.5],
-    ["強的可怕", 25, 512.5, 410, 0.48, 270, -250, 457],
-    ["KK之王", 25, 194, 155.2, 0.4, 385, -250, undefined],
-    ["河牌幹死你", 11, 177.5, 322.7, 0.545, 447.5, -250, undefined],
-    ["大舅哥", 17, -27.5, -32.4, 0.412, 130, -250, undefined],
-    ["淡水金城武", 25, 39.5, 31.6, 0.48, 272.5, -250, undefined],
-    ["Z隕石毀滅者", 3, -210, -1400, 0.333, 162.5, -215, undefined],
-    ["中", 14, -584.5, -835, 0.214, 72.5, -250, undefined],
-    ["帥潮", 14, -1007.5, -1439.3, 0.286, 175, -250, undefined],
+    ["6669", 8, 707.5, 1768.8, 0.5, 540, -250, 757.5],
+    ["KK之王", 57, 6.5, 2.3, 0.456, 420, -250, 860],
+    ["PPAW", 8, -877.5, -2193.75, 0.25, 105, -250, 877.5],
+    ["z隕石毀滅者", 26, -33.5, -25.8, 0.5, 350, -250, 825],
+    ["中", 23, -434.5, -377.8, 0.348, 250, -250, 882.5],
+    ["大舅哥", 37, -880, -475.7, 0.378, 470, -250, 880],
+    ["威", 4, -497.5, -2487.5, 0, -32.5, -250, 497.5],
+    ["小騷屄", 2, 435, 4350, 1, 300, 135, 0],
+    ["帥潮", 14, -1007.5, -1439.3, 0.286, 175, -250, 1007.5],
+    ["強的可怕", 57, 1305, 457.9, 0.526, 327.5, -250, 565],
+    ["我是你爸", 22, 607.5, 552.3, 0.5, 452.5, -250, 1142.5],
+    ["河牌幹死你", 25, -478, -382.4, 0.48, 447.5, -250, 1235.5],
+    ["淡水金城武", 47, 1156.5, 492.1, 0.574, 457.5, -250, 662.5],
+    ["葉", 2, 119.5, 1195, 1, 92, 27.5, 0],
   ])(
     "calculates metrics for %s",
     (player, sessions, pnl, bb100, winRate, best, worst, maxDrawdown) => {
@@ -60,29 +65,34 @@ describe("acceptance dataset", () => {
   it("uses competition ranking for P&L ties", () => {
     const leaderboard = getPnlLeaderboard(sessionResults);
     expect(leaderboard.map(({ playerName, rank }) => [playerName, rank])).toEqual([
-      ["我是你爸", 1],
-      ["強的可怕", 2],
-      ["KK之王", 3],
-      ["河牌幹死你", 4],
-      ["淡水金城武", 5],
-      ["大舅哥", 6],
-      ["Z隕石毀滅者", 7],
-      ["中", 8],
-      ["帥潮", 9],
+      ["強的可怕", 1],
+      ["淡水金城武", 2],
+      ["6669", 3],
+      ["我是你爸", 4],
+      ["小騷屄", 5],
+      ["葉", 6],
+      ["KK之王", 7],
+      ["z隕石毀滅者", 8],
+      ["中", 9],
+      ["河牌幹死你", 10],
+      ["威", 11],
+      ["PPAW", 12],
+      ["大舅哥", 13],
+      ["帥潮", 14],
     ]);
   });
 
   it("leaves low-sample BB/100 players unranked", () => {
     const leaderboard = getBb100Leaderboard(sessionResults);
     expect(leaderboard.filter((entry) => entry.isQualified).map((entry) => entry.playerName))
-      .toEqual(["我是你爸", "強的可怕", "河牌幹死你", "KK之王", "淡水金城武", "大舅哥", "中", "帥潮"]);
+      .toEqual(["我是你爸", "淡水金城武", "強的可怕", "KK之王", "z隕石毀滅者", "中", "河牌幹死你", "大舅哥", "帥潮"]);
     expect(leaderboard.find((entry) => entry.playerName === "大舅哥")).toMatchObject({
-      playedSessions: 17,
-      rank: 6,
+      playedSessions: 37,
+      rank: 8,
       isQualified: true,
     });
-    expect(leaderboard.find((entry) => entry.playerName === "Z隕石毀滅者")).toMatchObject({
-      playedSessions: 3,
+    expect(leaderboard.find((entry) => entry.playerName === "6669")).toMatchObject({
+      playedSessions: 8,
       rank: null,
       isQualified: false,
     });
@@ -91,8 +101,8 @@ describe("acceptance dataset", () => {
   it("combines Kai records under the canonical 大舅哥 player identity", () => {
     expect(sessionResults.some((record) => record.player_name === "Kai")).toBe(false);
     expect(getPlayerStats(sessionResults, "大舅哥")).toMatchObject({
-      playedSessions: 17,
-      totalPnl: -27.5,
+      playedSessions: 37,
+      totalPnl: -880,
     });
   });
 
@@ -101,13 +111,13 @@ describe("acceptance dataset", () => {
       .filter((item) => item.session_status === "WARNING" && item.player_name === "強的可怕")
       .reduce((sum, item) => sum + item.pnl, 0);
     expect(warningPnl).toBe(349.5);
-    expect(getPlayerStats(sessionResults, "強的可怕").totalPnl).toBe(512.5);
+    expect(getPlayerStats(sessionResults, "強的可怕").totalPnl).toBe(1305);
   });
 
   it("finds the tied largest loss without assigning one player", () => {
     const largestLoss = Math.min(...sessionResults.map((item) => item.pnl));
     expect(largestLoss).toBe(-250);
-    expect(sessionResults.filter((item) => item.pnl === largestLoss)).toHaveLength(19);
+    expect(sessionResults.filter((item) => item.pnl === largestLoss)).toHaveLength(47);
   });
 });
 
@@ -192,8 +202,8 @@ describe("metric rules", () => {
       start: "2026-08-01",
       end: "2026-08-31",
     });
-    expect(getSessions(august)).toHaveLength(14);
-    expect(getGameDates(august)).toEqual(["2026-08-15"]);
+    expect(getSessions(august)).toHaveLength(26);
+    expect(getGameDates(august)).toEqual(["2026-08-15", "2026-08-29"]);
   });
 
   it("carries P&L forward when a player misses a global session", () => {

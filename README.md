@@ -1,5 +1,43 @@
 # Holdem Assistant
 
+## 資料更新與 Excel 格式
+
+正式環境請由 `/admin` 匯入 Excel。驗證通過後，按「發布此版本」才會更新公開戰績；每次匯入都會保留版本，必要時可從版本紀錄回復。
+
+### Excel 格式
+
+- 檔案格式：`.xlsx`，上限 10 MB。
+- 工作表名稱必須是 `Clean_SessionResults`。
+- 第一列必須為欄位名稱；不支援自行對應欄名。
+- 每列代表一位玩家在一局中的結果。`WARNING` 紀錄必須原樣保留，不能為了平衡損益而修改。
+
+| 欄位 | 必填 | 格式與限制 | 範例 |
+| --- | --- | --- | --- |
+| `game_date` | 是 | 有效日期，`YYYY-MM-DD` 或 Excel 日期儲存格 | `2026-08-15` |
+| `session_number` | 是 | 大於 0 的整數；同一天從 1 起編號 | `3` |
+| `player_name` | 是 | 非空白玩家名稱 | `大舅哥` |
+| `pnl` | 是 | 有限數值，可為正、負或 0 | `-250` |
+| `participated` | 是 | `TRUE` 或 `FALSE` | `TRUE` |
+| `source_sheet` | 否 | 原始工作表名稱 | `260815` |
+| `source_row` | 否 | 原始資料列號，正整數 | `12` |
+| `session_status` | 否 | `VALID` 或 `WARNING` | `WARNING` |
+
+最小範例：
+
+| game_date | session_number | player_name | pnl | participated | source_sheet | source_row | session_status |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| 2026-08-15 | 1 | 大舅哥 | 150 | TRUE | 260815 | 2 | VALID |
+| 2026-08-15 | 1 | 強的可怕 | -150 | TRUE | 260815 | 2 | WARNING |
+
+### 匯入限制與流程
+
+1. `game_date`、`session_number`、正規化後的 `player_name` 組合不可重複。
+2. `Kai` 會正規化為「大舅哥」；兩個名稱若出現在同一天、同一局，匯入會被拒絕。
+3. 前往 `/admin`，上傳 Excel，依畫面修正所有錯誤後確認資料摘要。
+4. 按「發布此版本」更新公開頁面；若要退回，從版本紀錄選取歷史版本的回復按鈕。
+
+首次啟用 Supabase、Vercel 環境變數與密碼設定，請參閱 [管理端資料匯入說明](docs/admin-import.md)。
+
 朋友間德州撲克戰績儀表板，將每局的玩家損益整理成可篩選的戰績總覽、排行與個人分析頁。
 
 ## 已完成功能
@@ -83,7 +121,7 @@ pnpm test:watch
 - 唯一使用的工作表：`Clean_SessionResults`
 - Runtime static JSON：`src/data/session-results.json`
 
-基準資料包含 148 筆玩家局次紀錄、25 局、3 個遊戲日與 10 位玩家；BB 固定為 5。
+基準資料包含 332 筆玩家局次紀錄、58 局、6 個遊戲日與 14 位玩家；BB 固定為 5。
 
 ### 更新資料
 
