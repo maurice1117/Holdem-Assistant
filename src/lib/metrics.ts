@@ -70,6 +70,15 @@ export function getCumulativePnl(
   });
 }
 
+function median(values: number[]): number | null {
+  if (values.length === 0) return null;
+  const sorted = [...values].sort((a, b) => a - b);
+  const middle = Math.floor(sorted.length / 2);
+  return sorted.length % 2 === 0
+    ? (sorted[middle - 1] + sorted[middle]) / 2
+    : sorted[middle];
+}
+
 export function getPlayerTrend(
   records: SessionResult[],
   playerName: string,
@@ -138,6 +147,16 @@ export function getPlayerStats(
   }
 
   const sessionStdDev = sampleStandardDeviation(playerRecords.map((record) => record.pnl));
+  const grossProfit = playerRecords.reduce(
+    (sum, record) => sum + Math.max(0, record.pnl),
+    0,
+  );
+  const grossLoss = Math.abs(
+    playerRecords.reduce((sum, record) => sum + Math.min(0, record.pnl), 0),
+  );
+  const bustCount = playerRecords.filter(
+    (record) => record.pnl <= GAME_CONFIG.bustThreshold,
+  ).length;
 
   return {
     playerName,
@@ -150,6 +169,9 @@ export function getPlayerStats(
     pushes,
     winRate: playedSessions === 0 ? null : wins / playedSessions,
     averagePnl: playedSessions === 0 ? null : totalPnl / playedSessions,
+    medianPnl: median(playerRecords.map((record) => record.pnl)),
+    profitFactor:
+      grossProfit === 0 ? null : grossLoss === 0 ? Number.POSITIVE_INFINITY : grossProfit / grossLoss,
     bestSession:
       playerRecords.reduce<SessionResult | null>(
         (best, record) => (!best || record.pnl > best.pnl ? record : best),
@@ -169,7 +191,8 @@ export function getPlayerStats(
     longestWinStreak,
     longestLossStreak,
     currentStreak: { type: activeType, count: activeCount },
-    bustCount: playerRecords.filter((record) => record.pnl <= GAME_CONFIG.bustThreshold).length,
+    bustCount,
+    bustRate: playedSessions === 0 ? null : bustCount / playedSessions,
   };
 }
 
@@ -260,6 +283,31 @@ export function getRecentFormLeaderboard(
           ? sorted[index - 1].rank
           : index + 1,
     }));
+}
+
+export function getStabilityLeaderboard(records: SessionResult[]): RankedPlayerStats[] {
+  const stats = getPlayers(records).map((playerName) => getPlayerStats(records, playerName));
+  const qualified = rankStats(
+    stats.filter(
+      (entry) =>
+        entry.playedSessions >= GAME_CONFIG.minBb100Sessions && entry.totalPnl > 0,
+    ),
+    (entry) => entry.profitFactor ?? Number.NEGATIVE_INFINITY,
+  );
+  const unqualified = stats
+    .filter(
+      (entry) =>
+        entry.playedSessions < GAME_CONFIG.minBb100Sessions || entry.totalPnl <= 0,
+    )
+    .sort(
+      (a, b) =>
+        (b.profitFactor ?? Number.NEGATIVE_INFINITY) -
+          (a.profitFactor ?? Number.NEGATIVE_INFINITY) ||
+        a.playerName.localeCompare(b.playerName),
+    )
+    .map((entry) => ({ ...entry, rank: null, isQualified: false }));
+
+  return [...qualified, ...unqualified];
 }
 
 export function getEquityCurve(

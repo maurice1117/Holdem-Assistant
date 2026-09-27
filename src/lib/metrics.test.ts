@@ -11,6 +11,7 @@ import {
   getPlayerStats,
   getPnlLeaderboard,
   getRecentFormLeaderboard,
+  getStabilityLeaderboard,
   filterRecentRecords,
 } from "./metrics";
 
@@ -178,8 +179,11 @@ describe("metric rules", () => {
       bb100: null,
       winRate: null,
       averagePnl: null,
+      medianPnl: null,
+      profitFactor: null,
       sessionStdDev: null,
       stdBB100: null,
+      bustRate: null,
     });
   });
 
@@ -223,6 +227,35 @@ describe("metric rules", () => {
       cumulativePnl: 10,
     });
     expect(getPlayerStats(records, "A").playedSessions).toBe(1);
+  });
+
+  it("calculates transparent stability metrics", () => {
+    const records = [
+      record("2026-01-01", 1, "A", 20),
+      record("2026-01-01", 2, "A", -10),
+      record("2026-01-01", 3, "A", 30),
+      record("2026-01-01", 4, "A", -250),
+    ];
+
+    expect(getPlayerStats(records, "A")).toMatchObject({
+      medianPnl: 5,
+      profitFactor: 50 / 260,
+      bustCount: 1,
+      bustRate: 0.25,
+    });
+  });
+
+  it("ranks only profitable players with enough sessions for stability", () => {
+    const profitable = Array.from({ length: 10 }, (_, index) =>
+      record("2026-01-01", index + 1, "A", index === 0 ? -10 : 5),
+    );
+    const losing = Array.from({ length: 10 }, (_, index) =>
+      record("2026-01-01", index + 1, "B", index === 0 ? 5 : -5),
+    );
+
+    const leaderboard = getStabilityLeaderboard([...profitable, ...losing]);
+    expect(leaderboard[0]).toMatchObject({ playerName: "A", rank: 1, isQualified: true });
+    expect(leaderboard[1]).toMatchObject({ playerName: "B", rank: null, isQualified: false });
   });
 
   it("keeps each player's most recent participating sessions", () => {

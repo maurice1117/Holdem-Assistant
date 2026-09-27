@@ -65,6 +65,8 @@ export interface PlayerStats {
   pushes: number;
   winRate: number | null;
   averagePnl: number | null;
+  medianPnl: number | null;
+  profitFactor: number | null;
   bestSession: SessionResult | null;
   worstSession: SessionResult | null;
   peakPnl: number;
@@ -79,6 +81,7 @@ export interface PlayerStats {
     count: number;
   };
   bustCount: number;
+  bustRate: number | null;
 }
 
 export interface RankedPlayerStats extends PlayerStats {

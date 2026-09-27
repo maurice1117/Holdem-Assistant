@@ -25,6 +25,7 @@ import {
   getBb100Leaderboard,
   getEquityCurve,
   getRecentFormLeaderboard,
+  getStabilityLeaderboard,
   getPnlLeaderboard,
   filterRecentRecords,
 } from "@/lib/metrics";
@@ -34,6 +35,7 @@ import { GameDayHeatmap } from "./game-day-heatmap";
 import { KpiCard } from "./kpi-card";
 import { Leaderboard } from "./leaderboard";
 import { RecentFormLeaderboard } from "./recent-form-leaderboard";
+import { StabilityLeaderboard } from "./stability-leaderboard";
 
 interface DashboardProps {
   records: SessionResult[];
@@ -102,6 +104,7 @@ export function Dashboard({ records }: DashboardProps) {
           ? getRecentFormLeaderboard(dateFilteredRecords, 10)
           : getRecentFormLeaderboard(dateFilteredRecords, recentWindow),
       sessions,
+      stabilityLeaderboard: getStabilityLeaderboard(dateFilteredRecords),
     };
   }, [records, recentWindow, selectedDate]);
 
@@ -290,6 +293,8 @@ export function Dashboard({ records }: DashboardProps) {
         entries={dashboard.recentForm}
         window={recentWindow === "all" ? 10 : recentWindow}
       />
+
+      <StabilityLeaderboard entries={dashboard.stabilityLeaderboard} />
 
       <div className="leaderboard-grid">
         <Leaderboard

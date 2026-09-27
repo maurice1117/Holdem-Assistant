@@ -618,8 +618,16 @@ input:checked + .custom-checkbox {
   margin-top: 16px;
 }
 
+.stability-card {
+  margin-top: 16px;
+}
+
 .recent-form-table {
   min-width: 760px;
+}
+
+.stability-table {
+  min-width: 820px;
 }
 
 .recent-highlights {
