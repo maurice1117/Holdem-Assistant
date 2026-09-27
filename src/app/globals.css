@@ -622,6 +622,93 @@ input:checked + .custom-checkbox {
   min-width: 760px;
 }
 
+.recent-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.recent-highlight {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 7px 10px;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: rgba(11, 16, 23, 0.45);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.recent-highlight:hover {
+  border-color: #475468;
+  transform: translateY(-1px);
+}
+
+.recent-highlight-player {
+  overflow: hidden;
+  color: #dce2e9;
+  font-size: 13px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recent-highlight-value {
+  grid-column: 1 / -1;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 19px;
+  font-weight: 650;
+}
+
+.recent-highlight .recent-trend {
+  grid-column: 1 / -1;
+  justify-content: flex-start;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.recent-details {
+  margin-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.recent-details summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 2px 0;
+  color: #a9b3c0;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.recent-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.recent-details summary span {
+  margin-left: auto;
+  color: var(--muted-dark);
+  font-weight: 500;
+}
+
+.recent-details summary svg {
+  transition: transform 160ms ease;
+}
+
+.recent-details[open] summary svg {
+  transform: rotate(180deg);
+}
+
+.recent-details .table-scroll {
+  margin-top: 8px;
+}
+
 .recent-trend {
   display: inline-flex;
   align-items: center;
@@ -1289,6 +1376,24 @@ input:checked + .custom-checkbox {
 
   .metric-detail {
     font-size: 10px;
+  }
+
+  .recent-highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .recent-highlight {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+  }
+
+  .recent-highlight-value {
+    grid-column: auto;
+    font-size: 16px;
+  }
+
+  .recent-highlight .recent-trend {
+    grid-column: 2 / -1;
   }
 
   .equity-card,
