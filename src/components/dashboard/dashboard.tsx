@@ -49,10 +49,11 @@ export function Dashboard({ records }: DashboardProps) {
   const gameDates = useMemo(() => getGameDates(records), [records]);
   const allPlayers = useMemo(() => getPlayers(records), [records]);
   const defaultPlayers = useMemo(() => {
-    const qualified = getBb100Leaderboard(records)
+    const leaders = getPnlLeaderboard(records)
       .filter((entry) => entry.isQualified)
+      .slice(0, 3)
       .map((entry) => entry.playerName);
-    return qualified.length > 0 ? qualified : allPlayers;
+    return leaders.length > 0 ? leaders : allPlayers.slice(0, 3);
   }, [allPlayers, records]);
 
   const [selectedDate, setSelectedDate] = useState("all");
@@ -238,7 +239,7 @@ export function Dashboard({ records }: DashboardProps) {
           <div>
             <div className="section-kicker">PERFORMANCE CURVE</div>
             <h2>累積戰績</h2>
-            <p>Cumulative P&amp;L · NT$</p>
+            <p>預設顯示總 P&amp;L 前 3 名 · 可從右側自由比較</p>
           </div>
           <details className="player-selector">
             <summary>
@@ -248,6 +249,9 @@ export function Dashboard({ records }: DashboardProps) {
             </summary>
             <div className="player-selector-menu">
               <div className="selector-actions">
+                <button type="button" onClick={() => setSelectedPlayers(defaultPlayers)}>
+                  前三名
+                </button>
                 <button type="button" onClick={() => setSelectedPlayers(allPlayers)}>
                   全選
                 </button>
