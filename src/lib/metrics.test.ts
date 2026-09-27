@@ -7,8 +7,11 @@ import {
   getBb100Leaderboard,
   getCumulativePnl,
   getEquityCurve,
+  getPlayerTrend,
   getPlayerStats,
   getPnlLeaderboard,
+  getRecentFormLeaderboard,
+  filterRecentRecords,
 } from "./metrics";
 
 const record = (
@@ -220,5 +223,50 @@ describe("metric rules", () => {
       cumulativePnl: 10,
     });
     expect(getPlayerStats(records, "A").playedSessions).toBe(1);
+  });
+
+  it("keeps each player's most recent participating sessions", () => {
+    const records = [
+      record("2026-01-01", 1, "A", 10),
+      record("2026-01-01", 1, "B", -10),
+      record("2026-01-01", 2, "A", 20),
+      record("2026-01-01", 3, "B", 5),
+      record("2026-01-01", 4, "A", 30),
+    ];
+
+    expect(filterRecentRecords(records, 2).map((item) => [item.player_name, item.session_number]))
+      .toEqual([["B", 1], ["A", 2], ["B", 3], ["A", 4]]);
+  });
+
+  it("calculates rolling average and drawdown points", () => {
+    const records = [
+      record("2026-01-01", 1, "A", 10),
+      record("2026-01-01", 2, "A", -4),
+      record("2026-01-01", 3, "A", -8),
+    ];
+
+    expect(getPlayerTrend(records, "A", 2)).toMatchObject([
+      { rollingAverage: 10, drawdown: 0 },
+      { rollingAverage: 3, drawdown: 4 },
+      { rollingAverage: -6, drawdown: 12 },
+    ]);
+  });
+
+  it("compares recent average P&L with the preceding window", () => {
+    const records = [
+      record("2026-01-01", 1, "A", -10),
+      record("2026-01-01", 2, "A", 0),
+      record("2026-01-01", 3, "A", 10),
+      record("2026-01-01", 4, "A", 20),
+    ];
+
+    expect(getRecentFormLeaderboard(records, 2)[0]).toMatchObject({
+      playerName: "A",
+      playedSessions: 2,
+      totalPnl: 30,
+      previousAveragePnl: -5,
+      averagePnlChange: 20,
+      isQualified: true,
+    });
   });
 });

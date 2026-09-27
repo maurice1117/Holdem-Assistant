@@ -16,7 +16,9 @@ import {
 
 import {
   PlayerDailyChartShell,
+  PlayerDrawdownChartShell,
   PlayerEquityChartShell,
+  PlayerMovingAverageChartShell,
 } from "@/components/charts/player-charts-shell";
 import { KpiCard } from "@/components/dashboard/kpi-card";
 import { GAME_CONFIG } from "@/config/game";
@@ -34,8 +36,8 @@ import {
   formatPercent,
   formatPnl,
 } from "@/lib/formatters";
-import { getCumulativePnl, getPlayerStats } from "@/lib/metrics";
-import type { SessionResult } from "@/types/poker";
+import { filterRecentRecords, getCumulativePnl, getPlayerStats, getPlayerTrend } from "@/lib/metrics";
+import type { RecentWindow, SessionResult } from "@/types/poker";
 
 interface PlayerDetailProps {
   playerName: string;
@@ -83,20 +85,23 @@ export function PlayerDetail({ playerName, records }: PlayerDetailProps) {
   );
   const gameDates = useMemo(() => getGameDates(playerAllRecords), [playerAllRecords]);
   const [selectedDate, setSelectedDate] = useState("all");
+  const [recentWindow, setRecentWindow] = useState<RecentWindow>("all");
   const [resultFilter, setResultFilter] = useState<ResultFilter>("all");
   const [sortKey, setSortKey] = useState<SortKey>("date");
 
   const detail = useMemo(() => {
     const dateRange =
       selectedDate === "all" ? undefined : { start: selectedDate, end: selectedDate };
-    const filtered = filterRecordsByDate(records, dateRange).filter(
+    const dateFiltered = filterRecordsByDate(records, dateRange).filter(
       (record) => record.participated && record.player_name === playerName,
     );
+    const filtered = filterRecentRecords(dateFiltered, recentWindow);
     const stats = getPlayerStats(filtered, playerName);
     const cumulative = getCumulativePnl(filtered, playerName);
     const dailyResults = getDailyPlayerResults(filtered).filter(
       (result) => result.playerName === playerName,
     );
+    const trend = getPlayerTrend(filtered, playerName);
     const historyBase = [...filtered].sort((a, b) => {
       if (sortKey === "pnl") return b.pnl - a.pnl || compareSessionResults(b, a);
       return compareSessionResults(b, a);
@@ -106,8 +111,8 @@ export function PlayerDetail({ playerName, records }: PlayerDetailProps) {
         ? historyBase
         : historyBase.filter((record) => resultType(record.pnl) === resultFilter);
 
-    return { cumulative, dailyResults, filtered, history, stats };
-  }, [playerName, records, resultFilter, selectedDate, sortKey]);
+    return { cumulative, dailyResults, filtered, history, stats, trend };
+  }, [playerName, recentWindow, records, resultFilter, selectedDate, sortKey]);
 
   const dateSubtitle =
     selectedDate === "all"
@@ -128,6 +133,7 @@ export function PlayerDetail({ playerName, records }: PlayerDetailProps) {
             {detail.stats.playedSessions} 局 · {dateSubtitle}
           </p>
         </div>
+        <div className="dashboard-filters">
         <label className="date-filter">
           <span>
             <CalendarDays size={15} aria-hidden="true" />
@@ -145,6 +151,27 @@ export function PlayerDetail({ playerName, records }: PlayerDetailProps) {
             <ChevronDown size={15} aria-hidden="true" />
           </div>
         </label>
+        <label className="date-filter">
+          <span>
+            <Layers3 size={15} aria-hidden="true" />
+            戰績範圍
+          </span>
+          <div className="select-wrap">
+            <select
+              value={recentWindow}
+              onChange={(event) =>
+                setRecentWindow(event.target.value === "all" ? "all" : Number(event.target.value) as 5 | 10 | 20)
+              }
+            >
+              <option value="all">全部局數</option>
+              <option value="5">最近 5 局</option>
+              <option value="10">最近 10 局</option>
+              <option value="20">最近 20 局</option>
+            </select>
+            <ChevronDown size={15} aria-hidden="true" />
+          </div>
+        </label>
+        </div>
       </section>
 
       {detail.filtered.length === 0 ? (
@@ -233,6 +260,29 @@ export function PlayerDetail({ playerName, records }: PlayerDetailProps) {
                 </div>
               </div>
               <PlayerDailyChartShell results={detail.dailyResults} />
+            </section>
+          </div>
+
+          <div className="detail-grid trend-grid">
+            <section className="surface detail-card">
+              <div className="section-heading">
+                <div>
+                  <div className="section-kicker">RECENT MOMENTUM</div>
+                  <h2>5 局移動平均</h2>
+                  <p>單局 P&amp;L 與近期平均走勢</p>
+                </div>
+              </div>
+              <PlayerMovingAverageChartShell points={detail.trend} />
+            </section>
+            <section className="surface detail-card">
+              <div className="section-heading">
+                <div>
+                  <div className="section-kicker">UNDERWATER</div>
+                  <h2>回撤深度</h2>
+                  <p>每局距離期間內歷史高點的差距</p>
+                </div>
+              </div>
+              <PlayerDrawdownChartShell points={detail.trend} />
             </section>
           </div>
 

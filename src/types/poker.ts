@@ -29,6 +29,18 @@ export interface CumulativePnlPoint {
   cumulativePnl: number;
 }
 
+export type RecentWindow = "all" | 5 | 10 | 20;
+
+export interface PlayerTrendPoint extends CumulativePnlPoint {
+  rollingAverage: number;
+  drawdown: number;
+}
+
+export interface RecentFormEntry extends RankedPlayerStats {
+  previousAveragePnl: number | null;
+  averagePnlChange: number | null;
+}
+
 export interface EquityCurvePlayerPoint {
   participated: boolean;
   sessionPnl: number | null;

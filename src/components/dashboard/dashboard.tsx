@@ -24,13 +24,16 @@ import { formatBb100, formatDateLong, formatDateShort, formatPnl } from "@/lib/f
 import {
   getBb100Leaderboard,
   getEquityCurve,
+  getRecentFormLeaderboard,
   getPnlLeaderboard,
+  filterRecentRecords,
 } from "@/lib/metrics";
-import type { SessionResult } from "@/types/poker";
+import type { RecentWindow, SessionResult } from "@/types/poker";
 
 import { GameDayHeatmap } from "./game-day-heatmap";
 import { KpiCard } from "./kpi-card";
 import { Leaderboard } from "./leaderboard";
+import { RecentFormLeaderboard } from "./recent-form-leaderboard";
 
 interface DashboardProps {
   records: SessionResult[];
@@ -53,14 +56,16 @@ export function Dashboard({ records }: DashboardProps) {
   }, [allPlayers, records]);
 
   const [selectedDate, setSelectedDate] = useState("all");
+  const [recentWindow, setRecentWindow] = useState<RecentWindow>("all");
   const [selectedPlayers, setSelectedPlayers] = useState<string[]>(defaultPlayers);
 
   const dashboard = useMemo(() => {
     const dateRange =
       selectedDate === "all" ? undefined : { start: selectedDate, end: selectedDate };
-    const filteredRecords = filterRecordsByDate(records, dateRange).filter(
+    const dateFilteredRecords = filterRecordsByDate(records, dateRange).filter(
       (record) => record.participated,
     );
+    const filteredRecords = filterRecentRecords(dateFilteredRecords, recentWindow);
     const sessions = getSessions(filteredRecords);
     const activePlayers = getPlayers(filteredRecords);
     const pnlLeaderboard = getPnlLeaderboard(filteredRecords);
@@ -91,9 +96,13 @@ export function Dashboard({ records }: DashboardProps) {
       largestWin,
       pnlChampion,
       pnlLeaderboard,
+      recentForm:
+        recentWindow === "all"
+          ? getRecentFormLeaderboard(dateFilteredRecords, 10)
+          : getRecentFormLeaderboard(dateFilteredRecords, recentWindow),
       sessions,
     };
-  }, [records, selectedDate]);
+  }, [records, recentWindow, selectedDate]);
 
   const togglePlayer = (player: string) => {
     setSelectedPlayers((current) =>
@@ -128,6 +137,7 @@ export function Dashboard({ records }: DashboardProps) {
             {dateSubtitle} · BB NT${GAME_CONFIG.bigBlind}
           </p>
         </div>
+        <div className="dashboard-filters">
         <label className="date-filter">
           <span>
             <CalendarDays size={15} aria-hidden="true" />
@@ -145,6 +155,27 @@ export function Dashboard({ records }: DashboardProps) {
             <ChevronDown size={15} aria-hidden="true" />
           </div>
         </label>
+        <label className="date-filter">
+          <span>
+            <Layers3 size={15} aria-hidden="true" />
+            戰績範圍
+          </span>
+          <div className="select-wrap">
+            <select
+              value={recentWindow}
+              onChange={(event) =>
+                setRecentWindow(event.target.value === "all" ? "all" : Number(event.target.value) as 5 | 10 | 20)
+              }
+            >
+              <option value="all">全部局數</option>
+              <option value="5">每位玩家最近 5 局</option>
+              <option value="10">每位玩家最近 10 局</option>
+              <option value="20">每位玩家最近 20 局</option>
+            </select>
+            <ChevronDown size={15} aria-hidden="true" />
+          </div>
+        </label>
+        </div>
       </section>
 
       <section className="kpi-grid" aria-label="關鍵戰績指標">
@@ -250,6 +281,11 @@ export function Dashboard({ records }: DashboardProps) {
           onTogglePlayer={togglePlayer}
         />
       </section>
+
+      <RecentFormLeaderboard
+        entries={dashboard.recentForm}
+        window={recentWindow === "all" ? 10 : recentWindow}
+      />
 
       <div className="leaderboard-grid">
         <Leaderboard

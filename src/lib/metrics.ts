@@ -4,7 +4,10 @@ import type {
   DateRange,
   EquityCurvePoint,
   PlayerStats,
+  PlayerTrendPoint,
   RankedPlayerStats,
+  RecentFormEntry,
+  RecentWindow,
   SessionResult,
 } from "../types/poker";
 import {
@@ -18,6 +21,28 @@ function getPlayerRecords(records: SessionResult[], playerName: string): Session
   return records
     .filter((record) => record.participated && record.player_name === playerName)
     .sort(compareSessionResults);
+}
+
+export function filterRecentRecords(
+  records: SessionResult[],
+  recentWindow: RecentWindow | number,
+): SessionResult[] {
+  if (recentWindow === "all") return records;
+
+  const recentKeysByPlayer = new Map<string, Set<string>>();
+  for (const player of getPlayers(records)) {
+    const recent = getPlayerRecords(records, player).slice(-recentWindow);
+    recentKeysByPlayer.set(
+      player,
+      new Set(recent.map((record) => `${record.game_date}#${record.session_number}`)),
+    );
+  }
+
+  return records.filter((record) =>
+    recentKeysByPlayer
+      .get(record.player_name)
+      ?.has(`${record.game_date}#${record.session_number}`),
+  );
 }
 
 function sampleStandardDeviation(values: number[]): number | null {
@@ -41,6 +66,32 @@ export function getCumulativePnl(
       sessionNumber: record.session_number,
       sessionPnl: record.pnl,
       cumulativePnl,
+    };
+  });
+}
+
+export function getPlayerTrend(
+  records: SessionResult[],
+  playerName: string,
+  rollingWindow = 5,
+): PlayerTrendPoint[] {
+  const playerRecords = getPlayerRecords(records, playerName);
+  let cumulativePnl = 0;
+  let runningPeak = 0;
+
+  return playerRecords.map((record, index) => {
+    cumulativePnl += record.pnl;
+    runningPeak = Math.max(runningPeak, cumulativePnl);
+    const windowRecords = playerRecords.slice(Math.max(0, index - rollingWindow + 1), index + 1);
+
+    return {
+      gameDate: record.game_date,
+      sessionNumber: record.session_number,
+      sessionPnl: record.pnl,
+      cumulativePnl,
+      rollingAverage:
+        windowRecords.reduce((sum, item) => sum + item.pnl, 0) / windowRecords.length,
+      drawdown: runningPeak - cumulativePnl,
     };
   });
 }
@@ -171,6 +222,44 @@ export function getBb100Leaderboard(
     }));
 
   return [...qualified, ...lowSample];
+}
+
+export function getRecentFormLeaderboard(
+  records: SessionResult[],
+  recentWindow: number,
+): RecentFormEntry[] {
+  const entries = getPlayers(records).map((playerName) => {
+    const playerRecords = getPlayerRecords(records, playerName);
+    const recentRecords = playerRecords.slice(-recentWindow);
+    const previousRecords = playerRecords.slice(-recentWindow * 2, -recentWindow);
+    const stats = getPlayerStats(recentRecords, playerName);
+    const previousAveragePnl =
+      previousRecords.length === 0
+        ? null
+        : previousRecords.reduce((sum, record) => sum + record.pnl, 0) /
+          previousRecords.length;
+
+    return {
+      ...stats,
+      rank: 0,
+      isQualified: recentRecords.length >= recentWindow,
+      previousAveragePnl,
+      averagePnlChange:
+        previousAveragePnl === null || stats.averagePnl === null
+          ? null
+          : stats.averagePnl - previousAveragePnl,
+    };
+  });
+
+  return entries
+    .sort((a, b) => b.totalPnl - a.totalPnl || a.playerName.localeCompare(b.playerName))
+    .map((entry, index, sorted) => ({
+      ...entry,
+      rank:
+        index > 0 && entry.totalPnl === sorted[index - 1].totalPnl
+          ? sorted[index - 1].rank
+          : index + 1,
+    }));
 }
 
 export function getEquityCurve(

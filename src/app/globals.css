@@ -197,6 +197,13 @@ input:focus-visible + .custom-checkbox {
   gap: 7px;
 }
 
+.dashboard-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
 .date-filter > span {
   display: flex;
   align-items: center;
@@ -607,6 +614,22 @@ input:checked + .custom-checkbox {
   margin-top: 16px;
 }
 
+.recent-form-card {
+  margin-top: 16px;
+}
+
+.recent-form-table {
+  min-width: 760px;
+}
+
+.recent-trend {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 3px;
+  white-space: nowrap;
+}
+
 .leaderboard-card {
   min-width: 0;
   padding: 21px;
@@ -844,6 +867,10 @@ input:checked + .custom-checkbox {
   grid-template-columns: minmax(0, 1.45fr) minmax(360px, 0.75fr);
   gap: 16px;
   margin-top: 16px;
+}
+
+.trend-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .detail-card {
@@ -1234,8 +1261,16 @@ input:checked + .custom-checkbox {
     margin-bottom: 22px;
   }
 
+  .dashboard-filters {
+    justify-content: flex-start;
+  }
+
   .select-wrap {
     width: 100%;
+  }
+
+  .dashboard-filters .date-filter {
+    flex: 1 1 220px;
   }
 
   .kpi-grid {
