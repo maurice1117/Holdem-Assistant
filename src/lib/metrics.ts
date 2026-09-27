@@ -3,6 +3,7 @@ import type {
   CumulativePnlPoint,
   DateRange,
   EquityCurvePoint,
+  LatestGameDaySummary,
   PlayerStats,
   PlayerTrendPoint,
   RankedPlayerStats,
@@ -308,6 +309,82 @@ export function getStabilityLeaderboard(records: SessionResult[]): RankedPlayerS
     .map((entry) => ({ ...entry, rank: null, isQualified: false }));
 
   return [...qualified, ...unqualified];
+}
+
+export function getLatestGameDaySummary(
+  records: SessionResult[],
+): LatestGameDaySummary | null {
+  const participated = getParticipatedRecords(records);
+  const gameDate = participated.reduce(
+    (latest, record) => (record.game_date > latest ? record.game_date : latest),
+    "",
+  );
+  if (!gameDate) return null;
+
+  const latestRecords = participated.filter((record) => record.game_date === gameDate);
+  const previousRecords = participated.filter((record) => record.game_date < gameDate);
+  const dailyPnl = new Map<string, number>();
+  for (const record of latestRecords) {
+    dailyPnl.set(record.player_name, (dailyPnl.get(record.player_name) ?? 0) + record.pnl);
+  }
+  const [dayChampion] = [...dailyPnl.entries()].sort(
+    (a, b) => b[1] - a[1] || a[0].localeCompare(b[0]),
+  );
+  const orderedLatest = [...latestRecords].sort(
+    (a, b) => b.pnl - a.pnl || a.player_name.localeCompare(b.player_name),
+  );
+
+  const previousRanks = new Map(
+    getPnlLeaderboard(previousRecords).map((entry) => [entry.playerName, entry.rank]),
+  );
+  const currentRanks = getPnlLeaderboard(participated);
+  const risers = currentRanks.flatMap((entry) => {
+    const previousRank = previousRanks.get(entry.playerName);
+    if (entry.rank === null || previousRank === null || previousRank === undefined) return [];
+    const positions = previousRank - entry.rank;
+    return positions > 0
+      ? [{ playerName: entry.playerName, positions, currentRank: entry.rank }]
+      : [];
+  });
+  const biggestRiser = risers.sort(
+    (a, b) => b.positions - a.positions || a.currentRank - b.currentRank,
+  )[0] ?? null;
+
+  const newHighPlayers = [...dailyPnl.keys()].filter((playerName) => {
+    const playerRecords = getPlayerRecords(participated, playerName);
+    let cumulative = 0;
+    let peak = 0;
+    let reachedNewHigh = false;
+    for (const record of playerRecords) {
+      cumulative += record.pnl;
+      if (record.game_date === gameDate && cumulative > peak) reachedNewHigh = true;
+      peak = Math.max(peak, cumulative);
+    }
+    return reachedNewHigh;
+  });
+
+  const activeStreaks = [...dailyPnl.keys()]
+    .map((playerName) => {
+      const streak = getPlayerStats(participated, playerName).currentStreak;
+      return { playerName, ...streak };
+    })
+    .filter(
+      (streak): streak is { playerName: string; type: "win" | "loss"; count: number } =>
+        streak.type !== "none" && streak.count >= 2,
+    )
+    .sort((a, b) => b.count - a.count || a.playerName.localeCompare(b.playerName));
+
+  return {
+    gameDate,
+    sessionCount: getSessions(latestRecords).length,
+    participantCount: dailyPnl.size,
+    dayChampion: { playerName: dayChampion[0], pnl: dayChampion[1] },
+    largestWin: orderedLatest[0],
+    largestLoss: orderedLatest.at(-1) ?? orderedLatest[0],
+    biggestRiser,
+    newHighPlayers,
+    activeStreaks,
+  };
 }
 
 export function getEquityCurve(

@@ -27,6 +27,7 @@ import {
   getRecentFormLeaderboard,
   getStabilityLeaderboard,
   getPnlLeaderboard,
+  getLatestGameDaySummary,
   filterRecentRecords,
 } from "@/lib/metrics";
 import type { RecentWindow, SessionResult } from "@/types/poker";
@@ -34,6 +35,7 @@ import type { RecentWindow, SessionResult } from "@/types/poker";
 import { GameDayHeatmap } from "./game-day-heatmap";
 import { KpiCard } from "./kpi-card";
 import { Leaderboard } from "./leaderboard";
+import { LatestGameSummary } from "./latest-game-summary";
 import { RecentFormLeaderboard } from "./recent-form-leaderboard";
 import { StabilityLeaderboard } from "./stability-leaderboard";
 
@@ -61,6 +63,7 @@ export function Dashboard({ records }: DashboardProps) {
   const [selectedDate, setSelectedDate] = useState("all");
   const [recentWindow, setRecentWindow] = useState<RecentWindow>("all");
   const [selectedPlayers, setSelectedPlayers] = useState<string[]>(defaultPlayers);
+  const latestSummary = useMemo(() => getLatestGameDaySummary(records), [records]);
 
   const dashboard = useMemo(() => {
     const dateRange =
@@ -236,6 +239,8 @@ export function Dashboard({ records }: DashboardProps) {
           tone="loss"
         />
       </section>
+
+      {latestSummary ? <LatestGameSummary summary={latestSummary} /> : null}
 
       <section className="surface equity-card">
         <div className="section-heading chart-heading">

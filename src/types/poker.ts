@@ -41,6 +41,22 @@ export interface RecentFormEntry extends RankedPlayerStats {
   averagePnlChange: number | null;
 }
 
+export interface LatestGameDaySummary {
+  gameDate: string;
+  sessionCount: number;
+  participantCount: number;
+  dayChampion: { playerName: string; pnl: number };
+  largestWin: SessionResult;
+  largestLoss: SessionResult;
+  biggestRiser: { playerName: string; positions: number; currentRank: number } | null;
+  newHighPlayers: string[];
+  activeStreaks: Array<{
+    playerName: string;
+    type: "win" | "loss";
+    count: number;
+  }>;
+}
+
 export interface EquityCurvePlayerPoint {
   participated: boolean;
   sessionPnl: number | null;

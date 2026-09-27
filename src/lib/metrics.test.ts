@@ -12,6 +12,7 @@ import {
   getPnlLeaderboard,
   getRecentFormLeaderboard,
   getStabilityLeaderboard,
+  getLatestGameDaySummary,
   filterRecentRecords,
 } from "./metrics";
 
@@ -256,6 +257,36 @@ describe("metric rules", () => {
     const leaderboard = getStabilityLeaderboard([...profitable, ...losing]);
     expect(leaderboard[0]).toMatchObject({ playerName: "A", rank: 1, isQualified: true });
     expect(leaderboard[1]).toMatchObject({ playerName: "B", rank: null, isQualified: false });
+  });
+
+  it("summarizes the latest game day and detects new highs", () => {
+    const records = [
+      record("2026-01-01", 1, "A", -20),
+      record("2026-01-01", 1, "B", 20),
+      record("2026-01-02", 1, "A", 30),
+      record("2026-01-02", 1, "B", -30),
+      record("2026-01-02", 2, "A", 10),
+      record("2026-01-02", 2, "B", -10),
+    ];
+
+    expect(getLatestGameDaySummary(records)).toMatchObject({
+      gameDate: "2026-01-02",
+      sessionCount: 2,
+      participantCount: 2,
+      dayChampion: { playerName: "A", pnl: 40 },
+      largestWin: { player_name: "A", pnl: 30 },
+      largestLoss: { player_name: "B", pnl: -30 },
+      biggestRiser: { playerName: "A", positions: 1, currentRank: 1 },
+      newHighPlayers: ["A"],
+      activeStreaks: [
+        { playerName: "A", type: "win", count: 2 },
+        { playerName: "B", type: "loss", count: 2 },
+      ],
+    });
+  });
+
+  it("returns null when no participated records exist", () => {
+    expect(getLatestGameDaySummary([])).toBeNull();
   });
 
   it("keeps each player's most recent participating sessions", () => {
