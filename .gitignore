@@ -230,3 +230,7 @@ coverage/
 !src/lib/
 !src/lib/**
 .vercel
+.env.local
+.codex-artifact/
+outputs/
+data/*更新.xlsx

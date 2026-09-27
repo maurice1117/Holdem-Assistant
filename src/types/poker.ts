@@ -7,6 +7,7 @@ export interface SessionResult {
   source_sheet?: string;
   source_row?: number;
   session_status?: "VALID" | "WARNING";
+  source_player_name?: string;
 }
 
 export interface DateRange {

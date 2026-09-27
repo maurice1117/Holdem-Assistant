@@ -16,6 +16,7 @@ export const sessionResultSchema = z.object({
   source_sheet: z.string().min(1).optional(),
   source_row: z.number().int().positive().optional(),
   session_status: z.enum(["VALID", "WARNING"]).optional(),
+  source_player_name: z.string().trim().min(1).optional(),
 });
 
 export const sessionResultsSchema = z.array(sessionResultSchema);
