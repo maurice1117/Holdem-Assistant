@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { Spade } from "lucide-react";
 
 import { PrimaryNav } from "@/components/layout/primary-nav";
+import { SiteFooter } from "@/components/layout/site-footer";
 
 import "./globals.css";
 
@@ -17,7 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "德州撲克戰績",
+  title: { default: "德州撲克戰績", template: "%s | Holdem Room" },
   description: "朋友間的 Poker Performance Dashboard",
 };
 
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </div>
         </header>
         {children}
+        <SiteFooter />
       </body>
     </html>
   );
